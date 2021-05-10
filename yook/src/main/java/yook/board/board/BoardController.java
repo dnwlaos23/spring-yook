@@ -24,24 +24,6 @@ public class BoardController {
 	@Resource(name = "boardService")
 	private BoardService boardService;
 
-	/*
-	 * @RequestMapping(value = "/reviewList.do") public ModelAndView
-	 * ReviewList(CommandMap commandMap) throws Exception { ModelAndView mv = new
-	 * ModelAndView("review"); return mv; }
-	 */
-
-	/*
-	 * @RequestMapping(value = "/reviewPagingList.do") public ModelAndView
-	 * reviewListPaging(CommandMap commandMap) throws Exception { ModelAndView mv =
-	 * new ModelAndView("jsonView");
-	 * 
-	 * List<Map<String, Object>> list =
-	 * boardService.selectReviewList(commandMap.getMap()); mv.addObject("list",
-	 * list); if (list.size() > 0) { mv.addObject("TOTAL",
-	 * list.get(0).get("TOTAL_COUNT")); } else { mv.addObject("TOTAL", 0); } return
-	 * mv; }
-	 */
-
 	@RequestMapping(value = "/qnaList.do")
 	public ModelAndView qnaList(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("qnaList");
@@ -82,7 +64,7 @@ public class BoardController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/qnaDetail.do") // ±Û µðÅ×ÀÏ º¸±â
+	@RequestMapping(value = "/qnaDetail.do") // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public ModelAndView qnaDetail(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("qnaDetail");
 		Map<String, Object> map = boardService.qnaDetail(commandMap.getMap());
@@ -90,7 +72,7 @@ public class BoardController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/noticeDetail.do") // ±Û µðÅ×ÀÏ º¸±â
+	@RequestMapping(value = "/noticeDetail.do") // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public ModelAndView noticeDetail(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("noticeDetail");
 		Map<String, Object> map = boardService.noticeDetail(commandMap.getMap());
@@ -98,7 +80,7 @@ public class BoardController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/eventDetail.do") // ±Û µðÅ×ÀÏ º¸±â
+	@RequestMapping(value = "/eventDetail.do") // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public ModelAndView eventDetail(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("eventDetail");
 		Map<String, Object> map = boardService.eventDetail(commandMap.getMap());
@@ -106,33 +88,7 @@ public class BoardController {
 		return mv;
 	}
 
-	/*
-	 * @RequestMapping(value = "/insertReview.do") // ±ÛÀÛ¼º public ModelAndView
-	 * insertReview(CommandMap commandMap, HttpServletRequest request) throws
-	 * Exception { ModelAndView mv = new ModelAndView("reviewWrite");
-	 * commandMap.put("RE_IMAGE", request.getSession().getAttribute("RE_IMAGE"));
-	 * boardService.insertReview(commandMap.getMap(), request);
-	 * mv.addObject("RE_NUM", commandMap.get("RE_NUM")); return mv; }
-	 * 
-	 * @RequestMapping(value = "/reviewDelete.do") public ModelAndView
-	 * reviewDelete(CommandMap commandMap) throws Exception { ModelAndView mv = new
-	 * ModelAndView("redirect:/reviewList.do");
-	 * boardService.deleteReview(commandMap.getMap()); return mv; }
-	 * 
-	 * @RequestMapping(value = "/updateReviewForm.do") // º¸µå ¼öÁ¤Æû public ModelAndView
-	 * updateReviewForm(CommandMap commandMap) throws Exception { ModelAndView mv =
-	 * new ModelAndView("reviewUpdateForm"); Map<String, Object> map =
-	 * boardService.updatReviewForm(commandMap.getMap()); mv.addObject("map", map);
-	 * 
-	 * return mv; }
-	 * 
-	 * @RequestMapping(value = "/updateReview.do") // ¼öÁ¤ ¿Ï¼º public ModelAndView
-	 * updateReview(CommandMap commandMap) throws Exception { ModelAndView mv = new
-	 * ModelAndView("redirect:/reviewList.do");
-	 * boardService.updateReview(commandMap.getMap()); return mv; }
-	 */
-
-	@RequestMapping(value = "/insertQna.do") // ±ÛÀÛ¼º
+	@RequestMapping(value = "/insertQna.do") // ï¿½ï¿½ï¿½Û¼ï¿½
 	public ModelAndView insertQna(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("qnaWrite");
 		commandMap.put("QNA_IMAGE", request.getSession().getAttribute("QNA_IMAGE"));
@@ -148,7 +104,7 @@ public class BoardController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/updateQnaForm.do") // º¸µå ¼öÁ¤Æû
+	@RequestMapping(value = "/updateQnaForm.do") // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public ModelAndView updateQnaForm(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("qnaUpdateForm");
 		Map<String, Object> map = boardService.updateQnaForm(commandMap.getMap());
@@ -157,7 +113,7 @@ public class BoardController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/updateQna.do") // ¼öÁ¤ ¿Ï¼º
+	@RequestMapping(value = "/updateQna.do") // ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¼ï¿½
 	public ModelAndView updateQna(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("redirect:/qnaList.do");
 		boardService.updateQna(commandMap.getMap());

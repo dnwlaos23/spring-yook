@@ -7,20 +7,22 @@
 	<select id="bestGoodsList" parameterType="hashmap" resultType="hashmap"> <!-- 최신 상품 리스트 -->
       <![CDATA[
       SELECT
-            G.GOODS_NUM, 
-            G.GOODS_NAME, 
-            G.GOODS_PRICE,  
-            G.GOODS_DATE,
-            G.GOODS_CATE,
-            G.GOODS_COUNT,
-            G.GOODS_IMAGE,
-            A.GOODS_WEIGHT
-         FROM GOODS G, GOODS_ATTRIBUTE A
+         G.GOODS_NUM, 
+         G.GOODS_NAME, 
+         G.GOODS_PRICE,  
+         G.GOODS_DATE,
+         G.GOODS_CATE,
+         G.GOODS_COUNT,
+         G.GOODS_IMAGE,
+         A.GOODS_WEIGHT
+      FROM 
+         GOODS G, 
+         GOODS_ATTRIBUTE A
          
-         WHERE G.GOODS_NUM = A.GOODS_NUM
-         
-         ORDER BY 
-            GOODS_COUNT DESC
+      WHERE 
+         G.GOODS_NUM = A.GOODS_NUM        
+      ORDER BY 
+         GOODS_COUNT DESC
       ]]>
    </select>
    
@@ -28,23 +30,24 @@
    <select id="GoodsListAll" parameterType="hashmap" resultType="hashmap"> 
       <![CDATA[
       SELECT
-            G.GOODS_NUM, 
-            G.GOODS_NAME, 
-            G.GOODS_PRICE,  
-            G.GOODS_DATE,
-            G.GOODS_CATE,
-            G.GOODS_COUNT,
-            G.GOODS_IMAGE,
-            A.GOODS_WEIGHT
-         FROM GOODS G, GOODS_ATTRIBUTE A
-         
-         WHERE G.GOODS_NUM = A.GOODS_NUM
-         
-         ORDER BY 
-            CASE WHEN GOODS_CATE LIKE '돼지고기' THEN GOODS_CATE END ASC , 
-            CASE WHEN GOODS_CATE LIKE '소고기' THEN GOODS_CATE END ASC ,
-            CASE WHEN GOODS_CATE LIKE '닭고기' THEN GOODS_CATE END DESC,
-            GOODS_NUM ASC
+        G.GOODS_NUM, 
+        G.GOODS_NAME, 
+        G.GOODS_PRICE,   
+        G.GOODS_DATE,
+        G.GOODS_CATE,
+        G.GOODS_COUNT,
+        G.GOODS_IMAGE,
+        A.GOODS_WEIGHT
+      FROM 
+      	GOODS G, 
+      	GOODS_ATTRIBUTE A   
+      WHERE 
+      	G.GOODS_NUM = A.GOODS_NUM  
+      ORDER BY 
+        CASE WHEN GOODS_CATE LIKE '돼지고기' THEN GOODS_CATE END ASC , 
+        CASE WHEN GOODS_CATE LIKE '소고기' THEN GOODS_CATE END ASC ,
+        CASE WHEN GOODS_CATE LIKE '닭고기' THEN GOODS_CATE END DESC,
+        GOODS_NUM ASC
              
       ]]>
    </select>
@@ -104,40 +107,10 @@
       ]]>
    </select>
 	
-	
-	<select id="cateGoodsList" parameterType="hashmap" resultType="hashmap"> <!-- 상품 카테고리별 리스트  -->
-		SELECT 	AAA.*
-			FROM	(
-						SELECT 	COUNT(*) OVER() AS TOTAL_COUNT,
-								AA.*,
-								ROWNUM AS NUM
-						FROM	(
-			SELECT
-				GOODS_NUM,
-				GOODS_NAME,
-				GOODS_PRICE,
-				GOODS_DATE,
-				GOODS_CATE,
-				GOODS_COUNT,
-				GOODS_IMAGE
-			from GOODS
-			where GOODS_CATE = #{cate}
-			   <if test="GOODS_CATE != NULL">
-		   	 AND (GOODS_CATE LIKE '%' || #{GOODS_CATE} || '%' )
-		   </if>
-           <if test="orderBy != '' and orderBy != 'null'">
-		     ORDER BY ${orderBy} ${orderSort}
-		   </if>
-		) AA
-					) AAA
-			WHERE 	AAA.NUM BETWEEN #{START} AND #{END}
-		   
-	</select>
-	
-		<insert id="goodsInsert" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX"> <!-- 상품 등록 -->
-		<selectKey keyProperty="IDX" resultType="string" order="BEFORE">
-			SELECT GOODS_SEQ.NEXTVAL FROM DUAL
-		</selectKey>
+    <insert id="goodsInsert" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX"> <!-- 상품 등록 -->
+	<selectKey keyProperty="IDX" resultType="string" order="BEFORE">
+		SELECT GOODS_SEQ.NEXTVAL FROM DUAL
+	</selectKey>
 
 		<![CDATA[
 			INSERT INTO GOODS(
@@ -190,52 +163,6 @@
 		]]>
 	</insert>
 	
-<!-- 		<insert id="insertFile" parameterType="hashmap" > 상품 이미지 등록
-		<![CDATA[
-			INSERT INTO GOODS_IMAGE
-					(
-						GOODS_IMAGE_NUM,
-						GOODS_IMAGE_PARENT,
-						GOODS_IMAGE_ORG,
-						GOODS_IMAGE_STD,
-						GOODS_IMAGE_THUM
-					)
-			VALUES
-					(
-						GOODS_IMAGE_SEQ.NEXTVAL,
-						#{IDX},
-						#{fileName},
-						#{fileName},
-						#{fileName}
-					)
-		]]>
-	</insert> -->
-	
-		<update id="updateGoodsThumbnail" parameterType="hashmap"> <!-- 상품 썸네일 이미지 등록 -->
-		<![CDATA[
-			UPDATE  GOODS_IMAGE
-			SET     GOODS_THUMBNAIL = #{GOODS_THUMBNAIL}
-			WHERE   GOODS_NO = #{IDX}
-		]]>
-	</update>
-	
-		<insert id="insertGoodsLike" parameterType="hashmap"> <!-- 디테일에서 상품 좋아요 등록 -->
-		<![CDATA[
-			INSERT INTO GOODS_LIKE
-					(
-						GOODS_LIKE_NUM,
-						GOODS_LIKE_USER,
-						GOODS_LIKE_GNUM
-					)
-			VALUES
-					(
-						GOODS_LIKE_SEQ.NEXTVAL,
-						#{GOODS_LIKE_USER},
-						#{GOODS_NAME}
-					)
-		]]>
-	</insert>
-	
 	<select id="selectGoodsDetail" parameterType="hashmap" resultType="hashmap"> <!-- 상품 상세보기 -->
 		<![CDATA[
 			SELECT 
@@ -258,7 +185,7 @@
 		]]>
 	</select>
 	
-	<select id="selectGoodsAtt" parameterType="hashmap" resultType="hashmap"> <!-- 상품상세보기 컬러랑 사이즈 배열로 가져오기 -->
+	<select id="selectGoodsAtt" parameterType="hashmap" resultType="hashmap"> <!-- 상품상세보기 -->
 		<![CDATA[
 			SELECT 
 				LISTAGG(GOODS_WEIGHT,',') WITHIN GROUP(ORDER BY GOODS_WEIGHT) AS GOODS_WEIGHT
@@ -271,34 +198,8 @@
 		]]>
 	</select>
 	
-	<!-- <select id="selectGoodsAttNum" parameterType="hashmap" resultType="hashmap"> 상품상세보기 상품옵션 PK값 가져오기
-		<![CDATA[
-			SELECT
-				GOODS_ATT_NO
-			FROM
-				GOODS_ATTRIBUTE	
-			WHERE
-				GOODS_NUM = #{IDX}
-			AND GOODS_COLOR like '%' || #{SELECT_COLOR} || '%' 
-            AND GOODS_SIZE like  '%' || #{SELECT_SIZE} || '%'
-		]]>
-	</select> -->
-	
-	
-	
-	
-	<!-- <update id="goodsReadCntUp" parameterType="hashmap"> 조회수 증가
-		<![CDATA[
-			UPDATE GOODS
-			SET
-				GOODS_COUNT = NVL(GOODS_COUNT, 0) + 1
-			WHERE
-				GOODS_NUM = #{IDX}
-		]]>
-	</update>  -->
-	
 	<insert id="insertBasket" parameterType="hashmap">  <!-- 상품 장바구니 추가 -->
-   <selectKey resultType="string" keyProperty="GOODS_ATT_NO" order="BEFORE">
+    <selectKey resultType="string" keyProperty="GOODS_ATT_NO" order="BEFORE">
         SELECT
             GOODS_ATT_NO
          FROM
@@ -345,14 +246,6 @@
          
       ]]>
    </update>
-   
-   <delete id="gumeListDelete" parameterType="hashmap"> <!-- 구매목록 초기화 -->
-      <![CDATA[
-         DELETE 
-           FROM  GOODS_BASKET
-         WHERE   GOODS_CHECK = 'N'
-      ]]>
-   </delete>
    
    <select id="selectBasketNo" parameterType="hashmap" resultType="hashmap"> <!-- 상품상세보기 장바구니 PK값 가져오기 -->
 		<![CDATA[

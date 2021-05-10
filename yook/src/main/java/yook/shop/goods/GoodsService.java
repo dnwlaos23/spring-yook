@@ -11,12 +11,12 @@ public interface GoodsService {
 	
 	/*
 	 * List<Map<String, Object>> newGoodsList(Map<String, Object> map) throws
-	 * Exception; // ÃÖ½Å »óÇ° ¸®½ºÆ®
+	 * Exception; // ï¿½Ö½ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½Æ®
 	 */	
 	
-	List<Map<String, Object>> bestGoodsList(Map<String, Object> map) throws Exception; // º£½ºÆ® »óÇ° ¸®½ºÆ®
+	List<Map<String, Object>> bestGoodsList(Map<String, Object> map) throws Exception; // ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½Æ®
 	
-	List<Map<String, Object>> GoodsListAll(Map<String, Object> map) throws Exception; // º£½ºÆ® »óÇ° ¸®½ºÆ®
+	List<Map<String, Object>> GoodsListAll(Map<String, Object> map) throws Exception; // ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½Æ®
 	
 	List<Map<String, Object>> GoodsListPig(Map<String, Object> map) throws Exception;
 	
@@ -26,20 +26,22 @@ public interface GoodsService {
 		
 	/*
 	 * List<Map<String, Object>> cateGoodsList(Map<String, Object> map, String
-	 * GOODS_CATEGORY2) throws Exception; // Ä«Å×°í¸®º° »óÇ°¼ø
+	 * GOODS_CATEGORY2) throws Exception; // Ä«ï¿½×°ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½
 	 */	
 	void insertGoods(Map<String, Object> map, HttpServletRequest request) throws Exception; 
 	
 	void updateGoods(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	
-	Map<String, Object> selectGoodsDetail(Map<String,Object> map, HttpServletRequest request) throws Exception; // »óÇ° µðÅ×ÀÏ
+	Map<String, Object> selectGoodsDetail(Map<String,Object> map, HttpServletRequest request) throws Exception; // ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	
-	Map<String, Object> selectGoodsAtt(Map<String,Object> map) throws Exception; // »óÇ°¼Ó¼º µðÅ×ÀÏ
+	Map<String, Object> selectGoodsAtt(Map<String,Object> map) throws Exception; // ï¿½ï¿½Ç°ï¿½Ó¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	
-	void insertBasket(Map<String,Object> map, HttpServletRequest request) throws Exception; // Àå¹Ù±¸´Ï Ãß°¡
+	void insertBasket(Map<String,Object> map, HttpServletRequest request) throws Exception; // ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 	
-	void gumeListDelete(Map<String, Object> map) throws Exception; // ±¸¸Å¸®½ºÆ® ÃÊ±âÈ­
-	
-	List<Map<String, Object>> selectBasketNo(Map<String, Object> map) throws Exception; // ±¸¸ÅÇÒ¶§ ½ÃÄö½º°ª °¡Á®¿À±â
+	/*
+	 * void gumeListDelete(Map<String, Object> map) throws Exception; // ï¿½ï¿½ï¿½Å¸ï¿½ï¿½ï¿½Æ®
+	 * ï¿½Ê±ï¿½È­
+	 */	
+	List<Map<String, Object>> selectBasketNo(Map<String, Object> map) throws Exception; // ï¿½ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	
 }

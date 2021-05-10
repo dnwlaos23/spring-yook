@@ -20,9 +20,9 @@
          ga.GOODS_ATT_AMOUNT,
          g.GOODS_IMAGE
       FROM
-      BASKET b,
-      GOODS g, 
-      GOODS_ATTRIBUTE ga
+      	 BASKET b,
+      	 GOODS g, 
+      	 GOODS_ATTRIBUTE ga
       WHERE 
          b.MEM_NUM = #{MEM_NUM}
          AND b.GOODS_NUM = g.GOODS_NUM
@@ -57,16 +57,22 @@
    <!-- 해당 제품 장바구니 삭제 -->
    <delete id="basketDelete" parameterType="hashmap">
       <![CDATA[
-         DELETE FROM BASKET
-         WHERE BASKET_NUM = #{BASKET_NUM}
+         DELETE 
+         FROM 
+         	BASKET
+         WHERE 
+         	BASKET_NUM = #{BASKET_NUM}
       ]]>
    </delete>
    
    <!-- 해당 회원의 장바구니 제품 전체삭제 -->
    <delete id="basketAllDelete" parameterType="hashmap">
       <![CDATA[
-         DELETE FROM BASKET
-         WHERE MEM_NUM = #{MEM_NUM}
+         DELETE 
+         FROM 
+         	BASKET
+         WHERE 
+         	MEM_NUM = #{MEM_NUM}
       ]]>
    </delete>
 
@@ -92,9 +98,12 @@
       
          WHERE 
             b.MEM_NUM = #{MEM_NUM}
-             AND b.BASKET_NUM IN (${SELECT_BASKET_NUM})
-              AND b.GOODS_NUM= d.GOODS_NUM
-               AND b.GOODS_ATT_NO= e.GOODS_ATT_NO
+         AND 
+         	b.BASKET_NUM IN (${SELECT_BASKET_NUM})
+         AND 
+         	b.GOODS_NUM= d.GOODS_NUM
+         AND 
+         	b.GOODS_ATT_NO= e.GOODS_ATT_NO
       ]]>
    </select>
 
@@ -104,8 +113,10 @@
          DELETE FROM BASKET
          WHERE 
             MEM_NUM = #{MEM_NUM}
-         AND BASKET_NUM IN (${BASKET_NUM})
-			AND GOODS_ATT_NO IN (${GOODS_ATT_NO})
+         AND 
+         	BASKET_NUM IN (${BASKET_NUM})
+		 AND 
+		 	GOODS_ATT_NO IN (${GOODS_ATT_NO})
       ]]>
    </delete>
 

@@ -17,7 +17,7 @@ import yook.shop.goods.GoodsDao;
 @Service("basketService")
 public class BasketServiceImpl implements BasketService{
 	
-Logger log = Logger.getLogger(this.getClass()); // ·Î±×
+Logger log = Logger.getLogger(this.getClass()); 
 	
 	@Resource(name="basketDao") 
 	private BasketDao basketDao;

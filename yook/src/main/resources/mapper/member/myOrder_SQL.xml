@@ -50,6 +50,7 @@
       AND
          O.MEM_NUM = M.MEM_NUM
    </select>
+   
    <select id="status" parameterType="hashmap" resultType="hashmap">
 		SELECT
 		      COUNT(CASE WHEN aorder_state = '0' THEN 1 END) as PAT_NOT_YET,

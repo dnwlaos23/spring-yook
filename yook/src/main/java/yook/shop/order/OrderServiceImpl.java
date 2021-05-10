@@ -14,27 +14,24 @@ import yook.shop.order.OrderDao;
 
 @Service("orderService")
 public class OrderServiceImpl implements OrderService{
-Logger log = Logger.getLogger(this.getClass()); // 로그
+Logger log = Logger.getLogger(this.getClass()); // 占싸깍옙
 	
 	@Resource(name="orderDao") 
 	private OrderDao orderDao;
 
-	//주문페이지에서 필요한 정보 검색
 	@Override
 	public Map<String, Object> orderMemberInfo(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		return (Map<String, Object>) orderDao.orderMemberInfo(commandMap);
 	}
 	
-	//주문테이블 입력
-		@Override
-		public void insertOrder(CommandMap commandMap, HttpServletRequest request) throws Exception {
-			orderDao.insertOrder(commandMap);
-		}
-		
-		//입력한 주문 번호검색(주문완료 페이지에서 주문번호 보여주기)
-		@Override public Map<String, Object> selectOrder(CommandMap commandMap, HttpServletRequest request) throws Exception { 
-			return (Map<String, Object>) orderDao.selectOrder(commandMap); 
-		}
+	@Override
+	public void insertOrder(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		orderDao.insertOrder(commandMap);
+	}
+	
+	@Override public Map<String, Object> selectOrder(CommandMap commandMap, HttpServletRequest request) throws Exception { 
+		return (Map<String, Object>) orderDao.selectOrder(commandMap); 
+	}
 
 
 }

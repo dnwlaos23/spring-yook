@@ -13,105 +13,106 @@ public class GoodsDao extends AbstractDAO {
 
 	/*
 	 * @SuppressWarnings("unchecked") public List<Map<String, Object>>
-	 * newGoodsList(Map<String, Object> map) throws Exception { // ÃÖ½Å »óÇ° ¸®½ºÆ®
+	 * newGoodsList(Map<String, Object> map) throws Exception { // ï¿½Ö½ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½Æ®
 	 * 
 	 * return (List<Map<String, Object>>) newGoodsList("goods.newGoodsList", map); }
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> bestGoodsList(Map<String, Object> map) throws Exception { // ÀüÃ¼ »óÇ° ¸®½ºÆ®
+	public List<Map<String, Object>> bestGoodsList(Map<String, Object> map) throws Exception { // ï¿½ï¿½Ã¼ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½Æ®
 
 		return (List<Map<String, Object>>) GoodsList("goods.bestGoodsList", map);
 	}
 	
 	
 	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> GoodsListAll(Map<String, Object> map) throws Exception { // ÀüÃ¼ »óÇ° ¸®½ºÆ®
+	public List<Map<String, Object>> GoodsListAll(Map<String, Object> map) throws Exception { // ï¿½ï¿½Ã¼ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½Æ®
 
 		return (List<Map<String, Object>>) GoodsList("goods.GoodsListAll", map);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> GoodsListPig(Map<String, Object> map) throws Exception { // ÀüÃ¼ »óÇ° ¸®½ºÆ®
+	public List<Map<String, Object>> GoodsListPig(Map<String, Object> map) throws Exception { // ï¿½ï¿½Ã¼ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½Æ®
 
 		return (List<Map<String, Object>>) GoodsList("goods.GoodsListPig", map);
 	}
 	  
 	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> GoodsListCow(Map<String, Object> map) throws Exception { // ÀüÃ¼ »óÇ° ¸®½ºÆ®
+	public List<Map<String, Object>> GoodsListCow(Map<String, Object> map) throws Exception { // ï¿½ï¿½Ã¼ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½Æ®
 
 		return (List<Map<String, Object>>) GoodsList("goods.GoodsListCow", map);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> GoodsListChicken(Map<String, Object> map) throws Exception { // ÀüÃ¼ »óÇ° ¸®½ºÆ®
+	public List<Map<String, Object>> GoodsListChicken(Map<String, Object> map) throws Exception { // ï¿½ï¿½Ã¼ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½Æ®
 
 		return (List<Map<String, Object>>) GoodsList("goods.GoodsListChicken", map);
 	}
 
 	/*
 	 * @SuppressWarnings("unchecked") public List<Map<String, Object>>
-	 * cateGoodsList(Map<String, Object> map) throws Exception { // Ä«Å×°í¸® º° »óÇ° ¸®½ºÆ®
-	 * System.out.println("Ä«Å×°í¸®¸®½ºÆ®" + map); return (List<Map<String, Object>>)
+	 * cateGoodsList(Map<String, Object> map) throws Exception { // Ä«ï¿½×°ï¿½ ï¿½ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½Æ®
+	 * System.out.println("Ä«ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½Æ®" + map); return (List<Map<String, Object>>)
 	 * selectPagingList("goods.cateGoodsList", map); }
 	 */
 	
-	public void insertGoods(Map<String, Object> map) throws Exception { // »óÇ° µî·Ï
+	public void insertGoods(Map<String, Object> map) throws Exception { // ï¿½ï¿½Ç° ï¿½ï¿½ï¿½
 		insert("goods.goodsInsert", map);
 	}
 	
-	public void goodsAttributeInsert(Map<String, Object> map) throws Exception { // »óÇ°¿É¼Ç µî·Ï
+	public void goodsAttributeInsert(Map<String, Object> map) throws Exception { // ï¿½ï¿½Ç°ï¿½É¼ï¿½ ï¿½ï¿½ï¿½
 		insert("goods.attributeInsert", map);
 	}
 	
-	public void goodsAttributeUpdate(Map<String, Object> map) throws Exception { // »óÇ°¿É¼Ç µî·Ï
+	public void goodsAttributeUpdate(Map<String, Object> map) throws Exception { // ï¿½ï¿½Ç°ï¿½É¼ï¿½ ï¿½ï¿½ï¿½
 		update("goods.attributeUpdate", map);
 	}
 	
-	public void insertGoodsThumbnail(Map<String, Object> map) throws Exception { // »óÇ° ½æ³×ÀÏ ÀÌ¹ÌÁö µî·Ï
+	public void insertGoodsThumbnail(Map<String, Object> map) throws Exception { // ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		update("goods.updateGoodsThumbnail", map);
 	}
 	
-	public void insertFile(Map<String, Object> map) throws Exception { // »óÇ° ÀÌ¹ÌÁöÆÄÀÏ µî·Ï
+	public void insertFile(Map<String, Object> map) throws Exception { // ï¿½ï¿½Ç° ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		insert("goods.insertFile", map);
 	}
 	
-	public void insertGoodsLike(Map<String, Object> map) throws Exception { // »óÇ° µðÅ×ÀÏ¿¡¼­ ÁÁ¾Æ¿ä µî·Ï
-		System.out.println("ÁÁ¾Æ¿ä" + map);
+	public void insertGoodsLike(Map<String, Object> map) throws Exception { // ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½
+		System.out.println("ï¿½ï¿½ï¿½Æ¿ï¿½" + map);
 		insert("goods.insertGoodsLike", map);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public Map<String, Object> selectGoodsDetail(Map<String, Object> map) throws Exception { // »óÇ° µðÅ×ÀÏ µ¥ÀÌÅÍ °¡Á®¿À±â
+	public Map<String, Object> selectGoodsDetail(Map<String, Object> map) throws Exception { // ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		return (Map<String, Object>) selectOne("goods.selectGoodsDetail", map);
 	}
 
 	@SuppressWarnings("unchecked")
-	public Map<String, Object> selectGoodsAtt(Map<String, Object> map) throws Exception { // »óÇ°¿É¼Ç ÄÃ·¯ »çÀÌÁî ¹è¿­ °¡Á®¿À±â
+	public Map<String, Object> selectGoodsAtt(Map<String, Object> map) throws Exception { // ï¿½ï¿½Ç°ï¿½É¼ï¿½ ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		return (Map<String, Object>) selectOne("goods.selectGoodsAtt", map);
 	}
 	
 	
 	
 	/*
-	 * public void goodsHitCnt(Map<String, Object> map) throws Exception { // Á¶È¸¼ö Áõ°¡
+	 * public void goodsHitCnt(Map<String, Object> map) throws Exception { // ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * System.out.println("goodsHitCntDao=" + map);
 	 * update("goods.goodsReadCntUp",map); }
 	 */
 	 
 	 
 	
-	public void insertBasket(Map<String, Object> map) throws Exception { // »óÇ° µðÅ×ÀÏ¿¡¼­ Àå¹Ù±¸´Ï µî·Ï
-		System.out.println("Àå¹Ù±¸´ÏÃß°¡=" + map);
+	public void insertBasket(Map<String, Object> map) throws Exception { // ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+		System.out.println("ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ï¿½ß°ï¿½=" + map);
 		insert("goods.insertBasket", map);
 	}
 	
-	public void gumeListDelete(Map<String, Object> map) throws Exception { // ±¸¸Å ¸®½ºÆ® ÃÊ±âÈ­
-		System.out.println("±¸¸Å¸®½ºÆ® »èÁ¦:"+map);
-		delete("goods.gumeListDelete", map);
-	}
+	/*
+	 * public void gumeListDelete(Map<String, Object> map) throws Exception { //
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ê±ï¿½È­ System.out.println("ï¿½ï¿½ï¿½Å¸ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½:"+map);
+	 * delete("goods.gumeListDelete", map); }
+	 */
 	
 	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> selectBasketNo(Map<String, Object> map) throws Exception { // Àå¹Ù±¸´Ï ½ÃÄö½º¹øÈ£ °¡Á®¿À±â
+	public List<Map<String, Object>> selectBasketNo(Map<String, Object> map) throws Exception { // ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		System.out.println("selectBasketNo" + map);
 		return (List<Map<String, Object>>) selectList("goods.selectBasketNo", map);
 	}

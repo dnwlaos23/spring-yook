@@ -24,7 +24,7 @@ import yook.shop.basket.BasketService;
 public class BasketController {
 
 
-Logger log = Logger.getLogger(this.getClass()); //�α�
+Logger log = Logger.getLogger(this.getClass());
 	
 	@Resource(name="basketService")
 	private BasketService basketService;
@@ -55,7 +55,7 @@ Logger log = Logger.getLogger(this.getClass()); //�α�
 	                      
 	      }
 		
-		//��ٱ��� ���� ����
+		//장바구니 수량 수정
 		@RequestMapping(value="/shop/basketModify.do")
 		public ModelAndView basketModify(CommandMap commandMap, HttpServletRequest request) throws Exception {
 			
@@ -65,8 +65,8 @@ Logger log = Logger.getLogger(this.getClass()); //�α�
 			return mv;
 		}
 		
-		//��ٱ��� ���û���(1��)
 		
+		//장바구니 삭제
 		@RequestMapping(value="/shop/basketDelete.do")
 		public ModelAndView basketDelete(CommandMap commandMap, HttpServletRequest request) throws Exception {
 			
@@ -76,7 +76,7 @@ Logger log = Logger.getLogger(this.getClass()); //�α�
 			return mv;
 		}
 		
-		//���ٱ��� ��ü����
+		//장바구니 모두 삭제
 		@RequestMapping(value="/shop/basketAllDelete.do")
 		public ModelAndView basketAllDelete(CommandMap commandMap, HttpServletRequest request) throws Exception {
 			HttpSession session = request.getSession(); 

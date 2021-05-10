@@ -20,9 +20,8 @@ public class OrderDao extends AbstractDAO{
 	}
 
 	public void insertOrder(CommandMap commandMap) throws Exception{
-		insert("order.insertOrder", commandMap.getMap()); //ORDER���̺� INSERT
+		insert("order.insertOrder", commandMap.getMap()); 
 		
-		//�ֹ��� ��ǰ�� ������ �Ѱ��϶�
 		if(commandMap.get("GOODS_NUM").getClass().getName().equals("java.lang.String")){ 
 		  Map<String,Object> dp = new HashMap<String, Object>(); 
 		  dp.put("ORDER_DETAIL_GNUM",commandMap.get("GOODS_NUM"));
@@ -43,7 +42,8 @@ public class OrderDao extends AbstractDAO{
 		  delete("basketList.basketOrderDelete", bod);
 		  
 		  insert("order.insertAdmin", dp);
-		}else {	 //�ֹ��� ��ǰ�� ������ �ΰ� �̻��϶�
+		}else {
+			//map에 담긴 데이터들 배열로 저장
 			String[] ORDER_DETAIL_GNUM = (String[])commandMap.getMap().get("GOODS_NUM");
 			String[] GOODS_ATT_NO = (String[])commandMap.getMap().get("GOODS_ATT_NO");
 			String[] ORDER_DETAIL_WEIGHT = (String[])commandMap.getMap().get("GOODS_WEIGHT");
@@ -56,6 +56,7 @@ public class OrderDao extends AbstractDAO{
 			b=b.replace("]", "");
 			
 			int len = BASKET_NUM.length;
+			//장바구니에서 사고자 하는 품목의 개수만큼 for문 돌림
 			for(int i=0; i<len; i++ ) { 
 			  Map<String,Object> dp = new HashMap<String, Object>();
 			  dp.put("ORDER_DETAIL_GNUM", ORDER_DETAIL_GNUM[i]);
@@ -64,8 +65,7 @@ public class OrderDao extends AbstractDAO{
 			  dp.put("ORDER_DETAIL_AMOUNT", ORDER_DETAIL_AMOUNT[i]); 
 			  dp.put("ORDER_TCOST",commandMap.get("ORDER_TCOST")); 
 			  dp.put("MEM_NUM",commandMap.get("MEM_NUM")); 
-			  
-			  
+			  			  
 			  insert("order.insertOrderDetail", dp); 
 			  update("goods.updateGoodsAmount", dp);
 			  update("goods.updateGoodsDisplay", dp);
@@ -76,13 +76,9 @@ public class OrderDao extends AbstractDAO{
 			bod.put("MEM_NUM", commandMap.get("MEM_NUM"));
 		 	bod.put("BASKET_NUM", a);
 			bod.put("GOODS_ATT_NO", b);
-			delete("basketList.basketOrderDelete", bod);
-			
-			
-		}
-		
-		
-		
+			delete("basketList.basketOrderDelete", bod);//주문 후 장바구니목록에서 삭제
+						
+		}		
 	}
 	
 	 @SuppressWarnings("unchecked") 

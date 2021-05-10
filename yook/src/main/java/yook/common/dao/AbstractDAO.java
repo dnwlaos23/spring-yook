@@ -167,7 +167,7 @@ public class AbstractDAO {
 	         printQueryId(queryId);
 	         sqlSession.update(queryId,params);
 	      }
-	      public void as_ok_orderState(String queryId, Object params) { // �ű� as��ûȮ��(Order_LIST STATE����) 
+      public void as_ok_orderState(String queryId, Object params) { 
 	         printQueryId(queryId);
 	         sqlSession.update(queryId,params);
 	      }

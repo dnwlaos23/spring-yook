@@ -170,11 +170,12 @@ public class GoodsServiceImpl implements GoodsService {
 
 	}
 
-	@Override
-	public void gumeListDelete(Map<String, Object> map) throws Exception {
-		goodsDao.gumeListDelete(map);
-
-	}
+	/*
+	 * @Override public void gumeListDelete(Map<String, Object> map) throws
+	 * Exception { goodsDao.gumeListDelete(map);
+	 * 
+	 * }
+	 */
 
 	@Override
 	public List<Map<String, Object>> selectBasketNo(Map<String, Object> map) throws Exception { // ��ٱ��� PK�� ��������
