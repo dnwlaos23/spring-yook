@@ -67,7 +67,7 @@ function openAgree(){
       frm.MEM_AGREE.disabled=false
       else
          frm.MEM_AGREE.disabled=true
-   }
+}
 
 function agreeCheck(frm)
 {
@@ -248,7 +248,7 @@ function agreeCheck(frm)
             <br><br>
             <input type="button" name="agree" value="약관확인" class="btn btn-outline-primary mb-2"  onclick="openAgree()"/>
             <div style="display:inline-block; margin-left:100px;">
-  				<label class="form-check-label" for="MEM_AGREE"><input class="form-check-input" type="checkbox" name="MEM_AGREE" id="MEM_AGREE" disabled onclick="agreeCheck(this.form)">동의</label>
+  				<label class="form-check-label" for="MEM_AGREE"><input class="form-check-input" type="checkbox" name="MEM_AGREE" id="MEM_AGREE" >동의</label>
   			</div>
             </td>
             </tr>
@@ -256,7 +256,7 @@ function agreeCheck(frm)
             <tr>
                <td colspan="3" align="center">
                <br>
-               <a href="#this" class="btn" id="join"><input type="button" class="btn btn-primary mb-2" name="checkButton" value="가입하기" disabled/></a> 
+               <a href="#this" class="btn" id="join"><input type="button" class="btn btn-primary mb-2" name="checkButton" value="가입하기" /></a> 
                   <input type="reset" name="reset" value="다시입력" class="btn btn-outline-primary mb-2"/>&nbsp;&nbsp;&nbsp;
                   <input type="button" value="가입안함" class="btn btn-outline-primary mb-2" onclick="javascript:window.location='/muscle/main/openMainList.do'" />
                </td>
@@ -280,7 +280,7 @@ function agreeCheck(frm)
                   alert("아이디를 입력하세요");
                   $("#MEM_ID").focus();
                   return false;
-               }
+            }
 
             if(!$("#MEM_PW").val()){
                alert("비밀번호를 입력하세요");
@@ -305,8 +305,6 @@ function agreeCheck(frm)
                $("#MEM_NAME").focus();
                return false;
             }
-
-           
 
             if(!$("#MEM_PHONE").val()){
                alert("연락처를 입력하세요");

@@ -178,22 +178,23 @@
                 <c:forEach items="${list}" var="row">            
             <tr style="text-align: center;">
            
-               <td style="color:gray;"><font style="font-size:10pt;">${row.ORDER_NUM}</font>
+               <td style="color:gray;"><font style="font-size:10pt;"><br/>${row.ORDER_NUM}</font>
                </td>
                <td><img src="/yook/img/goods_upload/${row.GOODS_IMAGE}" width="100px" height="100px"></td>
                
-               <td><strong><a href="#this" name="detail" style="text-decoration: none; color:black; ">${row.GOODS_NAME}<br/>${row.ORDER_DETAIL_WEIGHT }
+               <td><strong><a href="#this" name="detail" style="text-decoration: none; color:black; "><br/> ${row.GOODS_NAME}<br/>${row.ORDER_DETAIL_WEIGHT }
                <input type="hidden" id="MEM_NUM" name="MEM_NUM" value="${session_MEMBER.MEM_NUM}">
                <input type="hidden" id="ORDER_NUM" name="ORDER_NUM" value="${row.ORDER_NUM}">
-               <input type="hidden" id="GOODS_NAME" name="GOODS_NAME" value="${row.GOODS_NAME}">
+               
                <input type="hidden" id="GOODS_NUM" name="GOODS_NUM" value="${row.GOODS_NUM}">
+               
                <input type="hidden" id="ORDER_DETAIL_WEIGHT" name="ORDER_DETAIL_WEIGHT" value="${row.ORDER_DETAIL_WEIGHT}">
-               </a></strong></td>
+               </a></strong></td>  
                
                
-               <td>${row.ORDER_DETAIL_AMOUNT}개</td>
-               <td>${row.GOODS_PRICE * row.ORDER_DETAIL_AMOUNT}원</td>
-               <td>
+               <td><br/>${row.ORDER_DETAIL_AMOUNT}개</td>
+               <td><br/>${row.GOODS_PRICE * row.ORDER_DETAIL_AMOUNT}원</td>
+               <td><br/>
                <c:if test="${row.AORDER_STATE == '0'}">
                입금전
                </c:if>
@@ -229,7 +230,7 @@
                </c:if>
                </td>
                <td>
-               
+               <br/>
                <a href="#this" name="shit">
                <input type="button" class="btn btn-outline-primary" value="취소/교환/반품"/>
                <input type="hidden" id="MEM_NUM" name="MEM_NUM" value="${session_MEMBER.MEM_NUM}">
@@ -404,16 +405,9 @@
                         extraAddr = ' (' + extraAddr
                               + ')';
                      }
-                     /* 
-                     document
-                           .getElementById("MEM_ADDRESS3").value = extraAddr; */
+                 
+                  } 
 
-                  } /* else {
-                     document
-                           .getElementById("MEM_ADDRESS3").value = '';
-                  } */
-
-                  
                   document
                         .getElementById('MEM_ZIPCODE').value = data.zonecode;
                   document
@@ -435,8 +429,7 @@
       });
 
       function fn_modifySc(){
-         
-          
+                  
          var comSubmit = new ComSubmit("frm");
        comSubmit.setUrl("<c:url value='/updateMyInfo.do' />");
 
@@ -463,12 +456,6 @@
              $("#MEM_NAME").focus();
              return false;
           }
-
-//           if(!$("#MEM_NICK").val()){
-//              alert("닉네임 입력하세요");
-//              $("#MEM_NICK").focus();
-//              return false;
-//           }
 
           if(!$("#MEM_PHONE").val()){
              alert("연락처를 입력하세요");
@@ -513,7 +500,7 @@
            comSubmit.submit();     
         }
         else{
-          history.go(-1);
+          history.go(0);
           }  
       }  
       </script>

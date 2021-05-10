@@ -31,7 +31,8 @@
       <![CDATA[
          INSERT INTO ORDERS
          (
-         
+         	ORDER_MEM_NAME,
+         	ORDER_PHONE,
             ORDER_NUM,
             MEM_NUM,
             ORDER_PRICE,
@@ -47,6 +48,8 @@
          )
          VALUES
          (
+         	#{ORDER_MEM_NAME},
+         	#{ORDER_PHONE},
             #{ORDER_NUM},
             #{MEM_NUM},
             #{ORDER_PRICE},
@@ -140,6 +143,7 @@
          (
             AORDER_NUM,
             AORDER_ORDER_NUM,
+			AORDER_GOODS_NUM,
             MEM_NUM
           
          )
@@ -147,6 +151,7 @@
          (
              ADMIN_ORDER_SEQ.NEXTVAL,
              #{AORDER_ORDER_NUM},
+             #{ORDER_DETAIL_GNUM},
             #{MEM_NUM}
          )
       ]]>

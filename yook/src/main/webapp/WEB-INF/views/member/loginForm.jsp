@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 
@@ -25,12 +25,12 @@
        }
        function checkId(){
          if(!document.myform.MEM_ID.value){
-           alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏÁö ¾ÊÀ¸¼Ì½À´Ï´Ù.");
+           alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì§€ ì•Šìœ¼ì…¨ìŠµë‹ˆë‹¤.");
            document.myform.id.focus();
            return false;
          }
          if(!document.myform.MEM_PW.value){
-           alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏÁö ¾ÊÀ¸¼Ì½À´Ï´Ù.");
+           alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì§€ ì•Šìœ¼ì…¨ìŠµë‹ˆë‹¤.");
            document.myform.passwd.focus();
            return false;
          }
@@ -41,11 +41,11 @@
           var id = $("#MEM_ID")[0].value;
           var pw = $("#MEM_PW")[0].value;
           if(id==null || id==''){
-             alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+             alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
              return false;
           }
           if(pw==null || pw==''){
-             alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+             alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
              return false;
           }
           myform.submit();
@@ -53,37 +53,37 @@
        
        $(document).ready(function(){
           
-          // ÀúÀåµÈ ÄíÅ°¸¦ ·Î±×ÀÎÈ­¸é¿¡ ºÒ·¯¿À±âÀ§ÇÔ
+          // ì €ì¥ëœ ì¿ í‚¤ë¥¼ ë¡œê·¸ì¸í™”ë©´ì— ë¶ˆëŸ¬ì˜¤ê¸°ìœ„í•¨
           var userInputId = getCookie("userInputId");
           $("#MEM_ID").val(userInputId);  
           
-          if($("#MEM_ID").val() != ""){ // ±× Àü¿¡ ID¸¦ ÀúÀåÇØ¼­ Ã³À½ ÆäÀÌÁö ·Îµù ½Ã, ÀÔ·Â Ä­¿¡ ÀúÀåµÈ ID°¡ Ç¥½ÃµÈ »óÅÂ¶ó¸é,
-             $("#idSaveCheck").attr("checked", true); // ID ÀúÀåÇÏ±â¸¦ Ã¼Å© »óÅÂ·Î µÎ±â.
+          if($("#MEM_ID").val() != ""){ // ê·¸ ì „ì— IDë¥¼ ì €ì¥í•´ì„œ ì²˜ìŒ í˜ì´ì§€ ë¡œë”© ì‹œ, ì…ë ¥ ì¹¸ì— ì €ì¥ëœ IDê°€ í‘œì‹œëœ ìƒíƒœë¼ë©´,
+             $("#idSaveCheck").attr("checked", true); // ID ì €ì¥í•˜ê¸°ë¥¼ ì²´í¬ ìƒíƒœë¡œ ë‘ê¸°.
           }
           
-          $("#idSaveCheck").change(function(){ // Ã¼Å©¹Ú½º¿¡ º¯È­°¡ ÀÖ´Ù¸é,
-             if($("#idSaveCheck").is(":checked")){ // ID ÀúÀåÇÏ±â Ã¼Å©ÇßÀ» ¶§,
+          $("#idSaveCheck").change(function(){ // ì²´í¬ë°•ìŠ¤ì— ë³€í™”ê°€ ìˆë‹¤ë©´,
+             if($("#idSaveCheck").is(":checked")){ // ID ì €ì¥í•˜ê¸° ì²´í¬í–ˆì„ ë•Œ,
                 var userInputId = $("#MEM_ID").val();
-                setCookie("userInputId", userInputId, 7); // 7ÀÏº¸°ü
-             }else{ // ID ÀúÀåÇÏ±â Ã¼Å© ÇØÁ¦ ½Ã,
+                setCookie("userInputId", userInputId, 7); // 7ì¼ë³´ê´€
+             }else{ // ID ì €ì¥í•˜ê¸° ì²´í¬ í•´ì œ ì‹œ,
                 deleteCookie("userInputId");
              }
           });
           
-          // ID ÀúÀåÇÏ±â¸¦ Ã¼Å©ÇÑ »óÅÂ¿¡¼­ ID¸¦ ÀÔ·ÂÇÏ´Â °æ¿ì, ÀÌ·² ¶§µµ ÄíÅ° ÀúÀå.
-          $("#MEM_ID").keyup(function(){ // ID ÀÔ·Â Ä­¿¡ ID¸¦ ÀÔ·ÂÇÒ ¶§,
-             if($("#idSaveCheck").is(":checked")){ // ID ÀúÀåÇÏ±â¸¦ Ã¼Å©ÇÑ »óÅÂ¶ó¸é,
+          // ID ì €ì¥í•˜ê¸°ë¥¼ ì²´í¬í•œ ìƒíƒœì—ì„œ IDë¥¼ ì…ë ¥í•˜ëŠ” ê²½ìš°, ì´ëŸ´ ë•Œë„ ì¿ í‚¤ ì €ì¥.
+          $("#MEM_ID").keyup(function(){ // ID ì…ë ¥ ì¹¸ì— IDë¥¼ ì…ë ¥í•  ë•Œ,
+             if($("#idSaveCheck").is(":checked")){ // ID ì €ì¥í•˜ê¸°ë¥¼ ì²´í¬í•œ ìƒíƒœë¼ë©´,
                 var userInputId = $("#MEM_ID").val();
-                setCookie("userInputId", userInputId, 7); // 7ÀÏ µ¿¾È ÄíÅ° º¸°ü
+                setCookie("userInputId", userInputId, 7); // 7ì¼ ë™ì•ˆ ì¿ í‚¤ ë³´ê´€
              }
           });
        });
        
       
         
-       function setCookie(cookieName, value, exdays){ //SETÀ» »ç¿ëÇÏ¿© ÄíÅ°ÀúÀå
+       function setCookie(cookieName, value, exdays){ //SETì„ ì‚¬ìš©í•˜ì—¬ ì¿ í‚¤ì €ì¥
            var exdate = new Date();
-           exdate.setDate(exdate.getDate() + exdays); //¼³Á¤ ÀÏ¼ö¸¸Å­ ÇöÀç½Ã°£¿¡ ¸¸·á°ªÀ¸·Î ÁöÁ¤
+           exdate.setDate(exdate.getDate() + exdays); //ì„¤ì • ì¼ìˆ˜ë§Œí¼ í˜„ì¬ì‹œê°„ì— ë§Œë£Œê°’ìœ¼ë¡œ ì§€ì •
            var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());
            document.cookie = cookieName + "=" + cookieValue;
        }
@@ -110,7 +110,7 @@
    </script>
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	
-    <title>·Î±×ÀÎ</title>
+    <title>ë¡œê·¸ì¸</title>
   </head>
   <body onload="begin()">
     <form name="myform" action="/yook/login.do" method="post" class="form-signin">
@@ -125,37 +125,35 @@
 <div style="width:500px; margin-left:auto; margin-right:auto; margin-bottom:150px;">
    <div>
       <p style="font-size:13; color:gray;">
-      °¡ÀÔÇÏ½Å ¾ÆÀÌµğ¿Í ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.<br>
-      ºñ¹Ğ¹øÈ£´Â ´ë¼Ò¹®ÀÚ¸¦ ±¸ºĞÇÕ´Ï´Ù.
+      ê°€ì…í•˜ì‹  ì•„ì´ë””ì™€ ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.<br>
+      ë¹„ë°€ë²ˆí˜¸ëŠ” ëŒ€ì†Œë¬¸ìë¥¼ êµ¬ë¶„í•©ë‹ˆë‹¤.
       </p>
    </div>
    
 
   
         <div class="form-group">
-          <label for="inputId">¾ÆÀÌµğ</label>
-        
-        
+          <label for="inputId">ì•„ì´ë””</label>       
           <input type="text" class="form-control" id="MEM_ID" placeholder="MEMBER ID" name="MEM_ID">
         </div>
         <div class="form-group">
-          <label for="inputPw">ºñ¹Ğ¹øÈ£</label>
+          <label for="inputPw">ë¹„ë°€ë²ˆí˜¸</label>
           <input type="password" class="form-control" id="MEM_PW" placeholder="PASSWORD" name="MEM_PW">
         </div>
         <div class="form-group form-check">
           <input type="checkbox" class="form-check-input" id="idSaveCheck">
-          <label class="form-check-label" for="idSaveCheck">¾ÆÀÌµğ ÀúÀå</label>
+          <label class="form-check-label" for="idSaveCheck">ì•„ì´ë”” ì €ì¥</label>
         </div>
    
    
    
-        <input type="button" class="btn btn-lg btn-primary btn-block" style="margin-left:auto; width:100%;" value="·Î±×ÀÎ" onclick="fsubmit();">
+        <input type="button" class="btn btn-lg btn-primary btn-block" style="margin-left:auto; width:100%;" value="ë¡œê·¸ì¸" onclick="fsubmit();">
          <div class="form-group form-check" style="margin-top:10px;">
          <div style="float:left;">
-          <span style="margin-left:30;"><a href="${contextPath}/yook/findId.do">¾ÆÀÌµğ/ºñ¹Ğ¹øÈ£ Ã£±â</a></span>
+          <span style="margin-left:30;"><a href="${contextPath}/yook/findId.do">ì•„ì´ë””/ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°</a></span>
           </div>
           <div style="float:right;">
-          <span style="margin-right:90;"><a href="${contextPath}/yook/join.do">È¸¿ø°¡ÀÔ</a></span>
+          <span style="margin-right:90;"><a href="${contextPath}/yook/join.do">íšŒì›ê°€ì…</a></span>
           </div>
         </div>
 

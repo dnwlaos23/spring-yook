@@ -31,6 +31,7 @@ public class LoginController {
 
 	Logger log = Logger.getLogger(this.getClass());
 	
+	//@Resource, @Inject는 의존주입
 	@Resource(name="mailService")
 	private MailService mailService;
 	
@@ -40,37 +41,20 @@ public class LoginController {
 	@Resource(name = "loginService")
 	private LoginService loginService;
 	
-	
-	
-	/*
-	 * @RequestMapping(value = "/main.do", method = RequestMethod.GET) public String
-	 * hello(Locale locale, Model model) {
-	 * 
-	 * return "main"; }
-	 */
 
-	@RequestMapping(value = "/LoginForm.do") // loginForm.jsp
+	@RequestMapping(value = "/LoginForm.do") //메인페이지 - 로그인버튼
 	public ModelAndView loginForm(HttpServletRequest request) throws Exception {
-		//session
-		HttpSession session = request.getSession();
 		
-		System.out.println("session : " + session.getAttribute("session_MEMBER"));
+		ModelAndView mv = new ModelAndView("loginForm");
+		return mv;
 		
-		if(session.getAttribute("session_MEMBER")!=null) {
-			ModelAndView mv = new ModelAndView();
-			mv.setViewName("redirect:/main.do"); 
-			return mv;
-		} else {
-			ModelAndView mv = new ModelAndView("loginForm");
-			return mv;
-		}
 	}
 
 	@RequestMapping(value = "/login.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView login(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("login");
 		String message = "";
-		String url = "";
+		
 
 		HttpSession session = request.getSession();
 
@@ -80,6 +64,8 @@ public class LoginController {
 			message = "해당 아이디가 존재하지 않습니다.";
 		} else {
 			if (chk.get("MEM_PW").equals(commandMap.get("MEM_PW"))) {
+				//chk가 null이 아니고 MEM_PW가 일치하면 세션에 데이터들을 저장한다.
+				//메인페이지에서 정보(아이디)를 띄울때 세션으로 가져와서 띄운다.
 				session.setAttribute("session_MEM_ID", commandMap.get("MEM_ID"));
 				session.setAttribute("session_MEM_NUM", commandMap.get("MEM_NUM"));
 				session.setAttribute("session_MEMBER", chk);
@@ -90,7 +76,7 @@ public class LoginController {
 		}
 		System.out.println(chk);
 		mv.addObject("message",message);
-		mv.addObject("url",url);
+		
 		 
 		return mv;
 	}
@@ -99,7 +85,7 @@ public class LoginController {
     public ModelAndView logout(CommandMap commandMap, HttpServletRequest request) throws Exception {
        HttpSession session = request.getSession();
        if (session != null)
-          session.invalidate();
+          session.invalidate();//세션값이 존재하면 무효화시킨다.
        ModelAndView mv = new ModelAndView();
        mv.setViewName("redirect:/main/logoutSc.do");
        return mv;
@@ -107,7 +93,7 @@ public class LoginController {
  
 	 @RequestMapping(value="/main/logoutSc.do")
 	 public ModelAndView openJoinForm(CommandMap commandMap)throws Exception{
-	    ModelAndView mv = new ModelAndView("logout");
+	    ModelAndView mv = new ModelAndView("logout");//세션값을 무효화시키고 logout페이지로 이동시킨다.
 	    
 	    return mv;
 	 }
@@ -150,8 +136,8 @@ public class LoginController {
 	}
 	
 	
-	@RequestMapping(value = "/member/openFindPwResult.do", method=RequestMethod.GET) //鍮꾨�踰덊샇 李얘린
-	@ResponseBody
+	@RequestMapping(value = "/member/openFindPwResult.do", method=RequestMethod.GET) 
+	@ResponseBody //자바 객체를 HTTP 응답 몸체로 전송
 	public boolean findPwEmail(CommandMap commandMap,@RequestParam String MEM_ID, @RequestParam String MEM_EMAIL, @RequestParam int random, HttpServletRequest req) throws Exception {
 		
 		String emailCheck = String.valueOf(loginService.findPwWithEmail(commandMap.getMap()));
@@ -162,7 +148,7 @@ public class LoginController {
 			   String authCode = String.valueOf(ran);
 			   session.setAttribute("authCode", authCode);
 			   session.setAttribute("random", random);
-			   String subject = "식육증가 비밀번호 변경 코드 안내 입니다.";
+			   String subject = "식육증가 비밀번호 변경 코드 안내 입니다."; // 전송할 메일의 제목
 			   StringBuilder sb = new StringBuilder();
 			   sb.append("귀하의 임시 비밀번호는 " + authCode + "입니다.");
 			   
@@ -170,7 +156,7 @@ public class LoginController {
 			   commandMap.put("MEM_EMAIL", MEM_EMAIL);
 			   commandMap.put("authCode", authCode);
 			   loginService.updateTempPw(commandMap.getMap());
-			   return mailService.send(subject, sb.toString(),"dnwlaos23@gmail.com", MEM_EMAIL, null);
+			   return mailService.send(subject, sb.toString(),"dnwlaos23@gmail.com", MEM_EMAIL, null); //반송할 이메일 주소
 		}else {
 			  return false;
 		}

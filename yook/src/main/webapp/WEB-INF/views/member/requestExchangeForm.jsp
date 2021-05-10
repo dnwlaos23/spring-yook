@@ -26,7 +26,7 @@
    <table class="table">
       <tr>
          <th>주문번호</th>
-         <td>${map.ORDER_NUM}
+         <td>${map.ORDER_NUM} 
       </tr>
       <tr>
          <th>상품명/옵션</th>
@@ -60,6 +60,7 @@
      
       <input type="hidden" id="MEM_NUM" name="MEM_NUM" value="${session_MEMBER.MEM_NUM}">
       <input type="hidden" id="ORDER_NUM" name="ORDER_NUM" value="${map.ORDER_NUM}">
+      <input type="hidden" id="GOODS_NUM" name="GOODS_NUM" value="${map.GOODS_NUM}">
       </a>
      <input type="button" class="btn btn-outline-primary" value="취소" onclick="javascript:history.go(-1);">
       
@@ -94,6 +95,7 @@
       comSubmit.addParam("AORDER_STATE", $("#AORDER_STATE").val());
       comSubmit.addParam("MEM_NUM", $("#MEM_NUM").val());
       comSubmit.addParam("ORDER_NUM", $("#ORDER_NUM").val());
+      comSubmit.addParam("GOODS_NUM", $("#GOODS_NUM").val());
 
       alert("문의가 접수되었습니다.");
       comSubmit.submit();

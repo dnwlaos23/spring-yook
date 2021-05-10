@@ -122,48 +122,48 @@ public class AbstractDAO {
 		return sqlSession.selectList(queryId,params);
 	}
 	
-	public List<Map<String,Object>> member_detail(String queryId, Object params) { // �ֹ�/��� �󼼺��� 
+	public List<Map<String,Object>> member_detail(String queryId, Object params) {
         printQueryId(queryId);
         return sqlSession.selectList(queryId,params);
      }
 	
-	//adminDAO �߰�����
-	public List<Map<String,Object>> order_admin_a(String queryId, Object params) { // �ֹ�/���-�ű��ֹ� 
+	
+	public List<Map<String,Object>> order_admin_a(String queryId, Object params) {  
         printQueryId(queryId);
         return sqlSession.selectList(queryId,params);
      }
 	
-	public List<Map<String,Object>> order_detail(String queryId, Object params) { // �ֹ�/��� �󼼺��� 
+	public List<Map<String,Object>> order_detail(String queryId, Object params) { 
         printQueryId(queryId);
         return sqlSession.selectList(queryId,params);
      }
      
-     public List<Map<String,Object>> order_detail_sub(String queryId, Object params) { // �ֹ�/��� �󼼺��� ��ǰ 
+     public List<Map<String,Object>> order_detail_sub(String queryId, Object params) { 
         printQueryId(queryId);
         return sqlSession.selectList(queryId,params);
      }
      
-     public List<Map<String,Object>> order_state(String queryId, Object params) { // �ֹ����� ���� 
+     public List<Map<String,Object>> order_state(String queryId, Object params) { 
          printQueryId(queryId);
          return sqlSession.selectList(queryId,params);
       }
       
-      public List<Map<String,Object>> order_state_ex(String queryId, Object params) { // �ֹ�����.��� ���� 
+      public List<Map<String,Object>> order_state_ex(String queryId, Object params) { 
          printQueryId(queryId);
          return sqlSession.selectList(queryId,params);
       }
       
-      public List<Map<String,Object>> as_admin_list(String queryId, Object params) { // ��ȯ.ȯ��.AS - ���������� 
+      public List<Map<String,Object>> as_admin_list(String queryId, Object params) {  
 	         printQueryId(queryId);
 	         return sqlSession.selectList(queryId,params);
 	      }
       
-      public void as_cancle_a(String queryId, Object params) { // as��û��� - as_list state=3 edate���� 
+      public void as_cancle_a(String queryId, Object params) {  
 	         printQueryId(queryId);
 	         sqlSession.update(queryId,params);
 	      }
       
-      public void as_ok_state(String queryId, Object params) { // �ű� as��ûȮ��(AS_LIST state Ȯ�������� ����) 
+      public void as_ok_state(String queryId, Object params) {  
 	         printQueryId(queryId);
 	         sqlSession.update(queryId,params);
 	      }

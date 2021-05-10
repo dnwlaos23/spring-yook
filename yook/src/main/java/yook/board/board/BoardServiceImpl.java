@@ -16,7 +16,7 @@ import yook.admin.aevent.AeventDAO;
 import yook.admin.notice.AnoticeDAO;
 import yook.admin.qna.QnaDAO;
 import yook.admin.review.AdminReviewDAO;
-import yook.common.util.FileUtils;
+
 
 @Service("boardService")
 public class BoardServiceImpl implements BoardService{
@@ -34,8 +34,7 @@ public class BoardServiceImpl implements BoardService{
    @Resource(name="reviewDAO")
    private AdminReviewDAO reviewDAO;
    
-   @Resource(name="fileUtils")
-   private FileUtils fileUtils;
+   
 
 	@Override
 	public List<Map<String, Object>> selectReviewList(Map<String, Object> map) throws Exception {

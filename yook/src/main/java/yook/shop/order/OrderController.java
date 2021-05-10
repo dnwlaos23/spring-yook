@@ -21,7 +21,7 @@ import yook.shop.order.OrderService;
 @Controller
 public class OrderController {
 	
-	Logger log = Logger.getLogger(this.getClass()); //·Î±×
+	Logger log = Logger.getLogger(this.getClass()); //ï¿½Î±ï¿½
 	/*
 	 * @Resource(name="orderService") private OrderService orderService;
 	 */
@@ -33,12 +33,12 @@ public class OrderController {
 	@Resource(name="orderService")
 	private OrderService orderService;
 	
-	//Àå¹Ù±¸´Ï ¸ğµÎ±¸¸Å
+	//ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½Î±ï¿½ï¿½ï¿½
 		@RequestMapping(value="/basketAllOrderWrite.do")
 		public ModelAndView basketAllOrderSelect(CommandMap commandMap, HttpServletRequest request) throws Exception {
 			
 			ModelAndView mv = new ModelAndView("orderForm");
-			Object MEM_NUM = ""; //¼¼¼Ç°ª °¡Á®¿À±â 
+			Object MEM_NUM = ""; //ï¿½ï¿½ï¿½Ç°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 			HttpSession session = request.getSession(); 
 			commandMap.put("MEM_NUM", ((Map)session.getAttribute("session_MEMBER")).get("MEM_NUM"));
 			
@@ -53,56 +53,51 @@ public class OrderController {
 			return mv;
 		}
 		
-		//»óÇ° ÁÖ¹®¿Ï·á(°áÁ¦)
+
 		@RequestMapping(value="/orderPay.do")
 		public ModelAndView orderPay(CommandMap commandMap, HttpServletRequest request) throws Exception {
 			
-			ModelAndView mv = new ModelAndView("orderCompleted");
+			ModelAndView mv = new ModelAndView("orderCompleted");//ì£¼ë¬¸ ì™„ë£Œ í˜ì´ì§€
 			
-			System.out.println("µé¾î¿È");
-			Object MEM_NUM = ""; //¼¼¼Ç°ª °¡Á®¿À±â 
+			Object MEM_NUM = ""; 
 			HttpSession session = request.getSession(); 
+			//MEM_NUM ì„¸ì…˜ìœ¼ë¡œ ë°›ì•„ì™€ ì¿¼ë¦¬ë¬¸ì—ì„œ ì‚¬ìš©
 			commandMap.put("MEM_NUM", ((Map)session.getAttribute("session_MEMBER")).get("MEM_NUM"));
-			//commandMap.put("ORDER_PRICE", Integer.parseInt((String)commandMap.get("ORDER_cost")));
 			
-			//System.out.println(commandMap.get("ORDER_cost"));
-			//System.out.println(commandMap.get("ORDER_PRICE"));
 			System.out.println(commandMap.get("ORDER_PRICE"));
 			System.out.println(commandMap.get("ORDER_TCOST"));
+			System.out.println(commandMap.get("GOODS_NUM"));
 			
-			
-			
-			orderService.insertOrder(commandMap, request);
+			orderService.insertOrder(commandMap, request);//Order í…Œì´ë¸”ì— ë°ì´í„° ì…ë ¥í•˜ëŠ” ì„œë¹„ìŠ¤
+		    //Order í…Œì´ë¸”ì—ì„œ ë°ì´í„° ê°€ì ¸ì™€ mapê°ì²´ì— ì €ì¥
 			Map<String,Object> map = orderService.selectOrder(commandMap, request);
 			
 			mv.addObject("map", map);
 			
-			
-			 map.put("ORDER_TCOST", commandMap.get("ORDER_TCOST"));
-			 map.put("MEM_NAME", commandMap.get("MEM_NAME"));
-			 map.put("MEM_PHONE", commandMap.get("MEM_PHONE"));
-			 map.put("ORDER_DZIPCODE", commandMap.get("ORDER_DZIPCODE"));
-			 map.put("ORDER_DADD1", commandMap.get("ORDER_DADD1"));
-			 map.put("ORDER_DADD2", commandMap.get("ORDER_DADD2"));
-			 map.put("ORDER_DMEMO", commandMap.get("ORDER_DMEMO"));	
-			 
-			
-			 
-			
+			//ì£¼ë¬¸ ì™„ë£Œ í˜ì´ì§€ì—ì„œ ë³´ì—¬ì£¼ê³  ì‹¶ì€ ë°ì´í„°ë“¤ map ê°ì²´ì— ì €ì¥í•˜ê³  ë¦¬í„´
+			map.put("ORDER_TCOST", commandMap.get("ORDER_TCOST"));
+			map.put("ORDER_MEM_NAME", commandMap.get("ORDER_MEM_NAME"));
+			map.put("ORDER_PHONE", commandMap.get("ORDER_PHONE"));
+			map.put("ORDER_DZIPCODE", commandMap.get("ORDER_DZIPCODE"));
+			map.put("ORDER_DADD1", commandMap.get("ORDER_DADD1"));
+			map.put("ORDER_DADD2", commandMap.get("ORDER_DADD2"));
+			map.put("ORDER_DMEMO", commandMap.get("ORDER_DMEMO"));	
+			map.put("ORDER_PAY_NAME", commandMap.get("ORDER_PAY_NAME"));
+		
 			return mv;
 			}
 		
-		//Àå¹Ù±¸´Ï ¼±ÅÃ»óÇ° ±¸¸Å
+		//ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã»ï¿½Ç° ï¿½ï¿½ï¿½ï¿½
 	      @RequestMapping(value="/basketSelectOrder.do")
 	      public ModelAndView basketSelect(CommandMap commandMap, HttpServletRequest request) throws Exception {
 	         
 	         ModelAndView mv = new ModelAndView("orderForm");
-	         Object MEM_NUM = ""; //¼¼¼Ç°ª °¡Á®¿À±â 
+	         Object MEM_NUM = ""; //ï¿½ï¿½ï¿½Ç°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	         HttpSession session = request.getSession(); 
 	         MEM_NUM = (Object)session.getAttribute("session_MEMBER"); 
 	         commandMap.put("MEM_NUM", ((Map)session.getAttribute("session_MEMBER")).get("MEM_NUM"));
-	         List<Map<String,Object>> list = basketService.basketSelectList(commandMap, request); //¼±ÅÃÇÑ Àå¹Ù±¸´Ï¹øÈ£ÀÇ »óÇ° 
-	         Map<String,Object> map = orderService.orderMemberInfo(commandMap, request); //ÁÖ¹®ÀÚÁ¤º¸
+	         List<Map<String,Object>> list = basketService.basketSelectList(commandMap, request); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ù±ï¿½ï¿½Ï¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½Ç° 
+	         Map<String,Object> map = orderService.orderMemberInfo(commandMap, request); //ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	         mv.addObject("list", list);
 	         mv.addObject("map", map);

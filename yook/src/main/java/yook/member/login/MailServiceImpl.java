@@ -13,12 +13,11 @@ import org.springframework.stereotype.Service;
 
 import yook.member.login.MailService;
 
-@SuppressWarnings("unused")
+@SuppressWarnings("unused")//사용하지 않는 코드 및 불필요한 코드와 관련된 경고를 억제
 @Service
 public class MailServiceImpl implements MailService{
    
    private Log log = LogFactory.getLog(MailServiceImpl.class);
-   // org.springframework.mail.javamail.JavaMailSender
    
    @Autowired
    private JavaMailSender javaMailSender;
@@ -37,7 +36,7 @@ public class MailServiceImpl implements MailService{
       helper.setText(text, true);
       helper.setFrom(from);
       helper.setTo(to);
-      // ÷�� ���� ó��
+      
       if (filePath != null) {
          File file = new File(filePath);
          if (file.exists()) {

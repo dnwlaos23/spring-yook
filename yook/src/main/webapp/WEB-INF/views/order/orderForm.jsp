@@ -54,16 +54,9 @@
                         extraAddr = ' (' + extraAddr
                               + ')';
                      }
-                     /* 
-                     document
-                           .getElementById("MEM_ADDRESS3").value = extraAddr; */
+                     
+                  } 
 
-                  } /* else {
-                     document
-                           .getElementById("MEM_ADDRESS3").value = '';
-                  } */
-
-                  
                   document
                         .getElementById('ORDER_DZIPCODE').value = data.zonecode;
                   document
@@ -76,29 +69,22 @@
             }).open();
    }
 
-   function fn_allPrice(){
-		
-		var array1 = document.getElementsByName("goods_price");
-		var array2 = document.getElementsByName("BASKET_AMOUNT");
-		var array3 = document.getElementsByName("ORDER_PRICE");
-		
-		var len = array2.length;
-		var hap = 0;
-		for (var i=0; i<len; i++){
-			var sell = array1[i].value;
-			var amt = array2[i].value;
-			var pri = Number(sell)*Number(amt); //각 상품별 주문금액
-			hap = Number(hap)+Number(pri); //주문금액 총합 구하기
-			array3[i].value = pri;	
-		}
-		var aa = document.getElementById("ORDER_PRICE").value;
-		var fee = document.getElementById("ORDER_DCOST").value;
-		pay = Number(aa)+Number(fee);
-		
-		
-		document.getElementById("ORDER_TCOST").value = pay; //최종결제금액
-
-	}
+	function fn_chkinfo(){
+      	var chk = document.getElementById("chkinfo").checked;
+      	if(chk==true){
+      		document.getElementById("ORDER_MEM_NAME").value = "${map.MEM_NAME}";
+      		document.getElementById("ORDER_PHONE").value = "${map.MEM_PHONE}";
+      		document.getElementById("ORDER_DZIPCODE").value = "${map.MEM_ZIPCODE}";
+      		document.getElementById("ORDER_DADD1").value = "${map.MEM_ADDRESS1}";
+      		document.getElementById("ORDER_DADD2").value = "${map.MEM_ADDRESS2}";
+      	}else if(chk==false){
+      		document.getElementById("ORDER_MEM_NAME").value = "";
+      		document.getElementById("ORDER_PHONE").value = "";
+      		document.getElementById("ORDER_DZIPCODE").value = "";
+      		document.getElementById("ORDER_DADD1").value = "";
+      		document.getElementById("ORDER_DADD2").value = "";
+      	}
+      }
 
    function fn_order_pay(){
 	      
@@ -134,7 +120,7 @@
 </head>
 
 
-<body onload="fn_allPrice()">
+<body>
 
   <div style="height: 160px;"></div>
   <div align="center">
@@ -143,9 +129,7 @@
   <div style="height: 50px;"></div>
   <div class="container" style="width:70%;">
   
-  <form name="orderWrite" id="orderWrite" method="post" action="/yook/orderPay.do">
-  <!-- 주문할 상품 리스트 (basketList에서 긁어옴) -->
-   <%-- <div class="table-responsive">
+  <div class="table-responsive">
          <table class="table table-striped">
             <colgroup>
                <col width="15" />
@@ -170,12 +154,14 @@
                        		<input type="hidden" id="GOODS_NUM" name="GOODS_NUM" value="${row. GOODS_NUM }"/>
 							<input type="hidden" id="BASKET_NUM" name="BASKET_NUM" value="${row. BASKET_NUM }"/>
 							<input type="hidden" name="GOODS_ATT_AMOUN" value="${row.GOODS_ATT_AMOUNT }">
-                       		<input type="hidden" name="GOODS_WEIGHT" value="${row.GOODS_WEIGHT }">
+							
+                       		<input type="hidden" id="GOODS_NAME" name="GOODS_NAME" value="${row.GOODS_NAME}">
                        		<input type="hidden" name="GOODS_ATT_NO" value="${row.GOODS_ATT_NO }">
                        		<input type="hidden" name="BASKET_AMOUNT" value="${row.BASKET_AMOUNT }">
+                       		
                         <tr>
                            <td><img src="/yook/img/goods_upload/${row.GOODS_IMAGE}" width="70px" height="70px"></td>
-                           <td>${row.GOODS_NAME } 
+                           <td>${row.GOODS_NAME }
                               <br>  (${row.GOODS_WEIGHT })
                            </td>
                            <td style="text-align: center">
@@ -198,32 +184,66 @@
             </tbody>
          </table>
       </div>
-      <hr> --%>
+      <hr>
+  
+  <form name="orderWrite" id="orderWrite" method="post" action="/yook/orderPay.do">
+  <!-- 주문할 상품 리스트 (basketList에서 긁어옴) -->
+   
   
         
-        <!-- 주문자 정보 -->
-        <div class="table-responsive">
-        <table style="width:100%;">
-           <colgroup>
-                 <col width="15%" />
-                 <col width="*" />
-              </colgroup>
-           <tr>
-              <th colspan="2">배송지 정보<hr></th>
-           </tr>
-           <tr>
-              <td>이름</td>
-              <td><input name="MEM_NAME" value="${map.MEM_NAME}" readonly="readonly" id="MEM_NAME" class="form-control" style="width:20%;"></td>
-           </tr>
-           <tr>
-              <td>이메일</td>
-              <td><input id="MEM_EMAIL" name="MEM_EMAIL" value="${map.MEM_EMAIL}" readonly="readonly" class="form-control" style="width:40%;"></td>
-           </tr>
-           <tr>
-              <td>연락처</td>
-              <td><input id="MEM_PHONE" name="MEM_PHONE" value="${map.MEM_PHONE}" readonly="readonly" class="form-control" style="width:40%;"></td>
-           </tr>
-           <tr>
+         <!-- 주문자 정보 -->
+      <div class="table-responsive">
+      <table style="width:100%;">
+         <colgroup>
+               <col width="15%" />
+               <col width="*" />
+            </colgroup>
+         <tr>
+            <th colspan="2">주문자 정보<hr></th>
+         </tr>
+         <tr>
+            <td>이름</td>
+            <td><input name="MEM_NAME" value="${map.MEM_NAME}" readonly="readonly" id="MEM_NAME" class="form-control" style="width:20%;"></td>
+         </tr>
+         <tr>
+            <td>이메일</td>
+            <td><input id="MEM_EMAIL" name="MEM_EMAIL" value="${map.MEM_EMAIL}" readonly="readonly" class="form-control" style="width:40%;"></td>
+         </tr>
+         <tr>
+            <td>연락처</td>
+            <td><input id="MEM_PHONE" name="MEM_PHONE" value="${map.MEM_PHONE}" readonly="readonly" class="form-control" style="width:40%;"></td>
+         </tr>
+      </table>
+      </div>
+      <hr>
+      
+      <!-- 배송 정보 -->
+      <div class="table-responsive">
+      
+      <table style="width:100%;">
+         <colgroup>
+               <col width="15%" />
+               <col width="*" />
+         </colgroup>
+          <tr>
+                 <th colspan="7">배송정보 <hr></th>
+          </tr>
+          <tr>
+          <td>&nbsp;&nbsp;</td>
+          	<td>
+          	<input align="right" type="checkbox" name="chkinfo" id="chkinfo" onclick="fn_chkinfo()">
+          		주문자 정보와 동일
+          	</td>
+          </tr>
+         <tr>
+            <td>받는 사람</td>            
+            <td><input type="text" id="ORDER_MEM_NAME" name="ORDER_MEM_NAME" class="form-control"  style="width:20%;"></td>                        
+         </tr>
+         <tr>
+            <td>휴대전화</td>
+            <td><input type="text" id="ORDER_PHONE" name="ORDER_PHONE" class="form-control"  style="width:40%;"></td>
+         </tr>
+         <tr>
             <td rowspan="3"> 주 소</td>
             <td>
                <input type="text" id="ORDER_DZIPCODE" name="ORDER_DZIPCODE" placeholder="우편번호" class="form-control" readonly style="display:inline-block; width:40%;">
@@ -237,16 +257,15 @@
          <tr>
             <td>
                <input type="text" name="ORDER_DADD2" id="ORDER_DADD2" placeholder="상세주소" size="40" class="form-control" style="width:55%;">
-                <p>※도서산간 지역의 경우 추후 수령 시 추가 배송비가 과금될 수 있습니다.</p>
-              </td>
+            </td>
          </tr>
          <tr>
             <td>배송 메모</td>
             <td><textarea id="ORDER_DMEMO" name="ORDER_DMEMO" rows="2" style="width:90%;" class="form-control"></textarea></td>
          </tr>
-        </table>
-        </div>
-        <hr>
+      </table>
+      </div>
+      <hr>
         
        <!-- 결제 정보 -->
         <div class="table-responsive">
@@ -289,23 +308,23 @@
         
         
         <!-- 금액 합계 구하기 -->
-        
-        
         <c:choose>  
-						<c:when test="${fn:length(list) > 0}">
-							<c:forEach items="${list }" var="row" varStatus="status">
-							<c:set var="goods_price2" value="${row.GOODS_PRICE}" />
-							<c:set var="goods_price" value="${row.GOODS_PRICE * row.BASKET_AMOUNT}" /> 
-							<c:set var="BASKET_AMOUNT" value="${row.BASKET_AMOUNT}" />
-							<c:set var="order_price" value="${order_price+goods_price}" />
-							<input type="hidden" id="GOODS_NUM" name="GOODS_NUM" value="${row. GOODS_NUM }"/>
-							<input type="hidden" id="BASKET_NUM" name="BASKET_NUM" value="${row. BASKET_NUM }"/>
-							<input type="hidden" name="GOODS_ATT_AMOUNT" value="${row.GOODS_ATT_AMOUNT }">
-                       		<input type="hidden" name="GOODS_WEIGHT" value="${row.GOODS_WEIGHT }">
-                       		<input type="hidden" name="GOODS_ATT_NO" value="${row.GOODS_ATT_NO }">
-                       		<input type="hidden" name="BASKET_AMOUNT" value="${row.BASKET_AMOUNT }">
-							</c:forEach>
-						</c:when>
+			<c:when test="${fn:length(list) > 0}">
+				<c:forEach items="${list }" var="row" varStatus="status">
+				<c:set var="goods_price2" value="${row.GOODS_PRICE}" />
+				<c:set var="goods_price" value="${row.GOODS_PRICE * row.BASKET_AMOUNT}" /> 
+				
+				<c:set var="BASKET_AMOUNT" value="${row.BASKET_AMOUNT}" />
+				<c:set var="order_price" value="${order_price+goods_price}" />
+				<input type="hidden" id="GOODS_NUM" name="GOODS_NUM" value="${row. GOODS_NUM }"/>
+				<input type="hidden" id="BASKET_NUM" name="BASKET_NUM" value="${row. BASKET_NUM }"/>
+				<input type="hidden" name="GOODS_ATT_AMOUNT" value="${row.GOODS_ATT_AMOUNT }">
+                <input type="hidden" name="GOODS_WEIGHT" value="${row.GOODS_WEIGHT }">
+                
+                <input type="hidden" name="GOODS_ATT_NO" value="${row.GOODS_ATT_NO }">
+                <input type="hidden" name="BASKET_AMOUNT" value="${row.BASKET_AMOUNT }">
+				</c:forEach>
+			</c:when>
 		</c:choose>
 		
 		
@@ -320,8 +339,7 @@
                     <p class="card-text">
                       <ul class="list-unstyled">
                         <li class="mb-2">총 상품가격</li>
-                        <li class="mb-2">배송비</li>
-                        <!-- <li class="mb-2">적립금</li> -->
+                        <li class="mb-2">배송비 (50,000원 이상 무료배송)</li>
                         <li class="mb-2">총 결제 예정 금액</li>
                       </ul>
                     </p>
@@ -334,10 +352,16 @@
                     <p class="card-text">
                       <ul class="list-unstyled">
                         <li class="mb-2"><strong><input type="text" align="right" id="ORDER_PRICE" name="ORDER_PRICE" readonly="readonly" value="${order_price }">원</strong></li>
-                        <li class="mb-2"><strong><input type="text" id="ORDER_DCOST" name="ORDER_DCOST" value="3000" readonly="readonly">원</strong></li> 
-                        <!-- <li class="mb-2"><strong><input type="text" align="right" id="POINT_ADD" name="POINT_ADD" readonly="readonly" value="">원</strong></li> -->
-                        <li class="mb-2"><strong><input type="text" id="ORDER_TCOST" name="ORDER_TCOST" readonly="readonly" value="${order_price + 3000 }">원</strong></li> 
-                        <%-- <input type="hidden" id="ORDER_TCOST" name="ORDER_TCOST" value="${order_price+3000}"/> --%>
+                        	<c:if test="${order_price>49999}">
+								<li class="mb-2"><strong><input type="text" id="ORDER_DCOST" name="ORDER_DCOST" value="0" readonly="readonly">원</strong></li>
+								<c:set var="order_dcost" value="0" />
+							</c:if>
+							<c:if test="${order_price<50000}">
+								<li class="mb-2"><strong><input type="text" id="ORDER_DCOST" name="ORDER_DCOST" value="3000" readonly="readonly">원</strong></li>
+								<c:set var="order_dcost" value="3000" />
+							</c:if>
+                         
+                        <li class="mb-2"><strong><input type="text" id="ORDER_TCOST" name="ORDER_TCOST" readonly="readonly" value="${order_price + order_dcost }">원</strong></li>                        
                       </ul>
                     </p>
                   </div>

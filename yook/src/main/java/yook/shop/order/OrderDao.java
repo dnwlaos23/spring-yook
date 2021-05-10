@@ -20,9 +20,9 @@ public class OrderDao extends AbstractDAO{
 	}
 
 	public void insertOrder(CommandMap commandMap) throws Exception{
-		insert("order.insertOrder", commandMap.getMap()); //ORDERÅ×ÀÌºí¿¡ INSERT
+		insert("order.insertOrder", commandMap.getMap()); //ORDERï¿½ï¿½ï¿½Ìºï¿½ INSERT
 		
-		//ÁÖ¹®ÇÑ »óÇ°ÀÇ Á¾·ù°¡ ÇÑ°³ÀÏ¶§
+		//ï¿½Ö¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ°ï¿½ï¿½Ï¶ï¿½
 		if(commandMap.get("GOODS_NUM").getClass().getName().equals("java.lang.String")){ 
 		  Map<String,Object> dp = new HashMap<String, Object>(); 
 		  dp.put("ORDER_DETAIL_GNUM",commandMap.get("GOODS_NUM"));
@@ -41,7 +41,9 @@ public class OrderDao extends AbstractDAO{
 		  bod.put("GOODS_ATT_NO", commandMap.get("GOODS_ATT_NO")); 
 		  bod.put("MEM_NUM", commandMap.get("MEM_NUM"));
 		  delete("basketList.basketOrderDelete", bod);
-		}else {	 //ÁÖ¹®ÇÑ »óÇ°ÀÇ Á¾·ù°¡ µÎ°³ ÀÌ»óÀÏ¶§
+		  
+		  insert("order.insertAdmin", dp);
+		}else {	 //ï¿½Ö¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î°ï¿½ ï¿½Ì»ï¿½ï¿½Ï¶ï¿½
 			String[] ORDER_DETAIL_GNUM = (String[])commandMap.getMap().get("GOODS_NUM");
 			String[] GOODS_ATT_NO = (String[])commandMap.getMap().get("GOODS_ATT_NO");
 			String[] ORDER_DETAIL_WEIGHT = (String[])commandMap.getMap().get("GOODS_WEIGHT");
@@ -67,15 +69,19 @@ public class OrderDao extends AbstractDAO{
 			  insert("order.insertOrderDetail", dp); 
 			  update("goods.updateGoodsAmount", dp);
 			  update("goods.updateGoodsDisplay", dp);
+			  
+			  insert("order.insertAdmin", dp);
 			}
 			Map<String,Object> bod = new HashMap<String, Object>();
 			bod.put("MEM_NUM", commandMap.get("MEM_NUM"));
 		 	bod.put("BASKET_NUM", a);
 			bod.put("GOODS_ATT_NO", b);
 			delete("basketList.basketOrderDelete", bod);
+			
+			
 		}
 		
-		insert("order.insertAdmin", commandMap.getMap());
+		
 		
 	}
 	

@@ -54,7 +54,7 @@ document.onkeydown = doNotReload;
 			</tr>
 			<tr>
 				<th width="30%" style="padding-left:20px;">입금자명</th>
-				<td>${map.MEM_NAME}</td>
+				<th>${map.ORDER_PAY_NAME}</th>
 			</tr>
 			<tr>
 				<th width="30%" style="padding-left:20px;">입금 금액</th>
@@ -68,11 +68,11 @@ document.onkeydown = doNotReload;
 		<table style="width:100%;" class="table">
 			<tr>
 				<th width="30%" style="padding-left:20px;">받으시는 분</th>
-				<td width="*">${map.MEM_NAME}</td>
+				<td width="*">${map.ORDER_MEM_NAME}</td>
 			</tr>
 			<tr>
 				<th width="30%" style="padding-left:20px;">연락처</th>
-				<td>${map.MEM_PHONE}</td>
+				<td>${map.ORDER_PHONE}</td>
 			</tr>
 			<tr>
 				<th width="30%" style="padding-left:20px;">우편번호</th>

@@ -12,6 +12,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import yook.common.map.CommandMap;
 
+//사용자 요청이 컨트롤러에 도달하기 전에 그 요청의 파라미터들을 수정할 수 있게 해준다.
 public class CustomMapArgumentResolver implements HandlerMethodArgumentResolver {
    @Override
    public boolean supportsParameter(MethodParameter parameter) {

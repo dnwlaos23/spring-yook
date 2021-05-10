@@ -19,30 +19,13 @@ public class MyOrderController {
    
    @Resource(name="myOrderService")
    private MyOrderService myOrderService;
-   
-	/*
-	 * @RequestMapping(value="/openMyOrderList.do") //ªÛ«∞ ∏ÆΩ∫∆Æ (¡÷πÆ«—∞≈) public
-	 * ModelAndView openMyOrderList(CommandMap commandMap, HttpServletRequest
-	 * request)throws Exception{ ModelAndView mv = new ModelAndView("myOrderList");
-	 * HttpSession session = request.getSession(); commandMap.put("MEM_ID",
-	 * session.getAttribute("session_MEM_ID")); commandMap.put("MEM_NUM",
-	 * ((Map)session.getAttribute("session_MEMBER")).get("MEM_NUM"));
-	 * List<Map<String, Object>> list =
-	 * myOrderService.openMyOrderList(commandMap.getMap()); 
-	 * Map<String, Object> map = myOrderService.myOrderStatus(commandMap.getMap()); 
-	 * mv.addObject("map",map); 
-	 * mv.addObject("list", list);
-	 * 
-	 * 
-	 * return mv; }
-	 */
-   
+      
    @RequestMapping(value="/openMyOrderDetail.do")
    public ModelAndView openMyOrderDetail(CommandMap commandMap)throws Exception{
       ModelAndView mv = new ModelAndView("myOrderDetail");
-      List<Map<String, Object>> list = myOrderService.openMyOrderDetailList(commandMap.getMap());
+      List<Map<String, Object>> list = myOrderService.openMyOrderDetailList(commandMap.getMap());//Ï£ºÎ¨∏ ÎÇ¥Ïó≠ Î¶¨Ïä§Ìä∏
       mv.addObject("list", list);
-      Map<String, Object> map = myOrderService.openMyOrderDetail(commandMap.getMap());
+      Map<String, Object> map = myOrderService.openMyOrderDetail(commandMap.getMap());//Ï£ºÎ¨∏ ÎÇ¥Ïó≠ ÏÉÅÏÑ∏Î≥¥Í∏∞
       mv.addObject("map", map);
       mv.addObject("ORDER_NUM", commandMap.get("ORDER_NUM"));
       mv.addObject("MEM_NUM", commandMap.get("MEM_NUM"));
@@ -68,8 +51,10 @@ public class MyOrderController {
    @RequestMapping(value="/updateMyChange.do")
    public ModelAndView updateMyChange(CommandMap commandMap)throws Exception{
       ModelAndView mv = new ModelAndView("redirect:/openMyInfoForm.do");
+      System.out.println(commandMap.getMap());
       myOrderService.updateMyChange(commandMap.getMap());
       mv.addObject("ORDER_NUM", commandMap.get("ORDER_NUM"));
+      mv.addObject("GOODS_NUM", commandMap.get("GOODS_NUM"));
       mv.addObject("MEM_NUM", commandMap.get("MEM_NUM"));
       
       return mv;

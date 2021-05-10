@@ -23,7 +23,7 @@ public class JoinController {
 	private JoinService joinService;
 	
 	
-	@RequestMapping(value="/join.do")
+	@RequestMapping(value="/join.do")// 메인페이지 - 회원가입 버튼
 	public ModelAndView openJoinForm(CommandMap commandMap)throws Exception{
 		ModelAndView mv = new ModelAndView("joinForm");
 		
@@ -32,7 +32,7 @@ public class JoinController {
 	
 	
 	
-	@RequestMapping(value="/member/insertJoin.do")
+	@RequestMapping(value="/member/insertJoin.do")//joinForm.jsp - 가입하기 버튼
 	public ModelAndView insertJoin(CommandMap commandMap) throws Exception{
 		ModelAndView mv = new ModelAndView("redirect:/LoginForm.do");
 		joinService.insertJoin(commandMap.getMap());
@@ -40,9 +40,9 @@ public class JoinController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/member/idCheck.do") //占쏙옙占싱듸옙 占쌩븝옙확占쏙옙
+	@RequestMapping(value = "/member/idCheck.do") //ajax 통신을 이용해 페이지 이동 없이 id 중복체크를 한다.
 	   public @ResponseBody String idCheck(CommandMap commandMap) throws Exception {
-	      
+	   //@ResponseBody - 자바 객체를 HTTP 응답 몸체로 전송한다.
 	      System.out.println(commandMap.getMap());
 	      
 	      String idCheck = String.valueOf(joinService.selectIdCheck(commandMap.getMap()));
@@ -52,7 +52,7 @@ public class JoinController {
 	      return idCheck;
 	   }
 	
-	@RequestMapping(value="/member/openAgree.do") //�̿��� �����ֱ�
+	@RequestMapping(value="/member/openAgree.do") //약관동의 창을 띄운다.
 	   public ModelAndView openAgree(CommandMap commandMap)throws Exception{
 	      ModelAndView mv = new ModelAndView("/member/agree");
 	      

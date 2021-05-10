@@ -32,7 +32,7 @@ import yook.admin.agoods.AgoodsServiceImpl;
 @Controller
 public class GoodsController {
 
-	Logger log = Logger.getLogger(this.getClass()); // ·Î±×
+	Logger log = Logger.getLogger(this.getClass()); // ï¿½Î±ï¿½
 
 	@Resource(name = "goodsService")
 	private GoodsService goodsService;
@@ -48,21 +48,21 @@ public class GoodsController {
 
 	/*
 	 * @RequestMapping(value = "/shop/newGoodsList.do") public ModelAndView
-	 * newGoodsList(CommandMap commandMap) throws Exception { // NewItem ¸®½ºÆ® Ãâ·Â
+	 * newGoodsList(CommandMap commandMap) throws Exception { // NewItem ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½
 	 * 
 	 * ModelAndView mv = new ModelAndView("jsonView");
 	 * 
 	 * List<Map<String, Object>> list =
 	 * goodsService.newGoodsList(commandMap.getMap());
 	 * 
-	 * mv.addObject("list", list); mv.addObject("TITLEMAIN", "»õ»óÇ°");
+	 * mv.addObject("list", list); mv.addObject("TITLEMAIN", "ï¿½ï¿½ï¿½ï¿½Ç°");
 	 * 
 	 * return mv;
 	 * 
 	 * }
 	 */
 	
-	@RequestMapping(value = "/main.do") // »óÇ° ÀüÃ¼º¸±â
+	@RequestMapping(value = "/main.do") // ï¿½ï¿½Ç° ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
 	public ModelAndView main(CommandMap commandMap) throws Exception { 
 
 		ModelAndView mv = new ModelAndView("main");
@@ -76,7 +76,7 @@ public class GoodsController {
 
 	}
 	
-	@RequestMapping(value = "/GoodsListAll.do") // »óÇ° ÀüÃ¼º¸±â
+	@RequestMapping(value = "/GoodsListAll.do") // ï¿½ï¿½Ç° ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
 	public ModelAndView GoodsListAll(CommandMap commandMap) throws Exception { 
 
 		ModelAndView mv = new ModelAndView("GoodsListAll");
@@ -90,7 +90,7 @@ public class GoodsController {
 
 	}
 	
-	@RequestMapping(value = "/GoodsListPig.do") // »óÇ° ÀüÃ¼º¸±â
+	@RequestMapping(value = "/GoodsListPig.do") // ï¿½ï¿½Ç° ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
 	public ModelAndView GoodsListPig(CommandMap commandMap) throws Exception { 
 
 		ModelAndView mv = new ModelAndView("GoodsListPig");
@@ -105,7 +105,7 @@ public class GoodsController {
 
 	}
 	
-	@RequestMapping(value = "/GoodsListCow.do") // »óÇ° ÀüÃ¼º¸±â
+	@RequestMapping(value = "/GoodsListCow.do") // ï¿½ï¿½Ç° ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
 	public ModelAndView GoodsListCow(CommandMap commandMap) throws Exception { 
 
 		ModelAndView mv = new ModelAndView("GoodsListCow");
@@ -119,7 +119,7 @@ public class GoodsController {
 
 	}
 	
-	@RequestMapping(value = "/GoodsListChicken.do") // »óÇ° ÀüÃ¼º¸±â
+	@RequestMapping(value = "/GoodsListChicken.do") // ï¿½ï¿½Ç° ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
 	public ModelAndView GoodsListChicken(CommandMap commandMap) throws Exception { 
 
 		ModelAndView mv = new ModelAndView("GoodsListChicken");
@@ -140,18 +140,18 @@ public class GoodsController {
 	 * orderBy, CommandMap commandMap,
 	 * 
 	 * @RequestParam(value = "GOODS_CATE", defaultValue = "") String GOODS_CATE,
-	 * HttpServletRequest request) // Ä«Å×°í¸®º° »óÇ°¸®½ºÆ® throws Exception { ModelAndView mv
+	 * HttpServletRequest request) // Ä«ï¿½×°ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Æ® throws Exception { ModelAndView mv
 	 * = new ModelAndView("goods"); commandMap.put("cate", cate);
 	 * request.setAttribute("GOODS_CATE", GOODS_CATE);
-	 * System.out.println("Ä«Å×°í¸® °Ë»öÈ®ÀÎ=" + commandMap.getMap());
+	 * System.out.println("Ä«ï¿½×°ï¿½ ï¿½Ë»ï¿½È®ï¿½ï¿½=" + commandMap.getMap());
 	 * System.out.println("orderby=" + orderBy);
 	 * 
 	 * mv.addObject("IDX", commandMap.getMap().get("IDX")); if
-	 * ("favorite".equals(orderBy)) { // ÀÎ±â»óÇ° commandMap.put("orderBy",
+	 * ("favorite".equals(orderBy)) { // ï¿½Î±ï¿½ï¿½Ç° commandMap.put("orderBy",
 	 * "GOODS_COUNT"); commandMap.put("orderSort", "DESC"); } else if
-	 * ("low".equals(orderBy)) { // ³·Àº°¡°Ý¼ø commandMap.put("orderBy", "GOODS_PRICE");
+	 * ("low".equals(orderBy)) { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¼ï¿½ commandMap.put("orderBy", "GOODS_PRICE");
 	 * commandMap.put("orderSort", "ASC"); } else if ("high".equals(orderBy)) { //
-	 * ³ôÀº°¡°Ý¼ø commandMap.put("orderBy", "GOODS_PRICE"); commandMap.put("orderSort",
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¼ï¿½ commandMap.put("orderBy", "GOODS_PRICE"); commandMap.put("orderSort",
 	 * "DESC"); }
 	 * 
 	 * mv.addObject("category", cate); String filePath_temp =
@@ -163,26 +163,26 @@ public class GoodsController {
 	 * orderBy, CommandMap commandMap,
 	 * 
 	 * @RequestParam(value = "GOODS_CATE", defaultValue = "") String GOODS_CATE,
-	 * HttpServletRequest request) // Ä«Å×°í¸®º° ¸®½ºÆ® Á¦ÀÌ½¼ throws Exception {
+	 * HttpServletRequest request) // Ä«ï¿½×°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Ì½ï¿½ throws Exception {
 	 * 
 	 * ModelAndView mv = new ModelAndView("jsonView"); List<Map<String, Object>>
 	 * list = null;
 	 * 
-	 * System.out.println("Ä«Å×°í¸® = " + cate); System.out.println("Ä«Å×°í¸® ¼ø¼­ =" +
-	 * orderBy); System.out.println("ÁßºÐ·ù =" + GOODS_CATE);
+	 * System.out.println("Ä«ï¿½×°ï¿½ = " + cate); System.out.println("Ä«ï¿½×°ï¿½ ï¿½ï¿½ï¿½ï¿½ =" +
+	 * orderBy); System.out.println("ï¿½ßºÐ·ï¿½ =" + GOODS_CATE);
 	 * 
 	 * // category commandMap.put("cate", cate); commandMap.put("orderBy", orderBy);
 	 * 
-	 * // order by if ("favorite".equals(orderBy)) { // ÀÎ±â»óÇ°
+	 * // order by if ("favorite".equals(orderBy)) { // ï¿½Î±ï¿½ï¿½Ç°
 	 * commandMap.put("orderBy", "GOODS_COUNT"); commandMap.put("orderSort",
-	 * "DESC"); } else if ("low".equals(orderBy)) { // ³·Àº°¡°Ý¼ø
+	 * "DESC"); } else if ("low".equals(orderBy)) { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¼ï¿½
 	 * commandMap.put("orderBy", "GOODS_PRICE"); commandMap.put("orderSort", "ASC");
-	 * } else if ("high".equals(orderBy)) { // ³ôÀº°¡°Ý¼ø commandMap.put("orderBy",
+	 * } else if ("high".equals(orderBy)) { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¼ï¿½ commandMap.put("orderBy",
 	 * "GOODS_PRICE"); commandMap.put("orderSort", "DESC"); }
 	 * 
 	 * list = goodsService.cateGoodsList(commandMap.getMap(), GOODS_CATE);
 	 * 
-	 * //System.out.println("ÅäÅ»Ä«¿îÆ®" + list.get(0).get("TOTAL_COUNT"));
+	 * //System.out.println("ï¿½ï¿½Å»Ä«ï¿½ï¿½Æ®" + list.get(0).get("TOTAL_COUNT"));
 	 * 
 	 * mv.addObject("list", list); if (list.size() > 0) { mv.addObject("TOTAL",
 	 * list.get(0).get("TOTAL_COUNT")); } else { mv.addObject("TOTAL", 0); } //
@@ -192,15 +192,15 @@ public class GoodsController {
 	 */ 
 	 
 	@RequestMapping(value = "/adminGoodsWrite.do") // url public ModelAndView
-	public ModelAndView goodsWriteForm(CommandMap commandMap) throws Exception { // »óÇ°µî·Ï Æû
+	public ModelAndView goodsWriteForm(CommandMap commandMap) throws Exception { // ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ ï¿½ï¿½
 	 
 	 ModelAndView mv = new ModelAndView("adminGoodsWrite"); mv.addObject("type",
-	 "write"); mv.addObject("title", "»óÇ°µî·Ï"); return mv;
+	 "write"); mv.addObject("title", "ï¿½ï¿½Ç°ï¿½ï¿½ï¿½"); return mv;
 	 
 	 }  
 	 
 	@RequestMapping(value = "/goodsWrite.do", method = RequestMethod.POST)
-	public ModelAndView goodsWrite(CommandMap commandMap, HttpServletRequest request) throws Exception { // »óÇ°µî·Ï
+	public ModelAndView goodsWrite(CommandMap commandMap, HttpServletRequest request) throws Exception { // ï¿½ï¿½Ç°ï¿½ï¿½ï¿½
 
 		ModelAndView mv = new ModelAndView("redirect:/adminGoodsList.do");
 
@@ -209,13 +209,13 @@ public class GoodsController {
 		commandMap.put("GOODS_IMAGE", request.getSession().getAttribute("GOODS_IMAGE"));
 
 		goodsService.insertGoods(commandMap.getMap(), request);
-		System.out.println("±Û¾²±âÀÔ´Ï´ç" + commandMap.getMap());
+		
 		return mv;
 
 	}
 
 	@RequestMapping(value = "/goodsDetail.do")
-	public ModelAndView goodsDetail(CommandMap commandMap, HttpServletRequest request) throws Exception { // »óÇ°µðÅ×ÀÏ
+	public ModelAndView goodsDetail(CommandMap commandMap, HttpServletRequest request) throws Exception { // ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		
 		
 		ModelAndView mv = new ModelAndView("goods_detail");
@@ -230,8 +230,8 @@ public class GoodsController {
 		System.out.println("map = " + map);
 
 		
-		mv.addObject("map", map); // »óÇ°ÀÇ PK°ª
-		mv.addObject("list", map); // »óÇ° »ó¼¼ Á¤º¸ÀÔ´Ï´Ù
+		mv.addObject("map", map); // ï¿½ï¿½Ç°ï¿½ï¿½ PKï¿½ï¿½
+		mv.addObject("list", map); // ï¿½ï¿½Ç° ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½
 
 		Map<String, Object> map1 = goodsService.selectGoodsAtt(commandMap.getMap());
 		
@@ -259,9 +259,9 @@ public class GoodsController {
 
 		int WeightSize = arrWeight.size();
 
-		mv.addObject("Weight", arrWeight); // ÄÃ·¯ ÃÑ °¹¼ö
+		mv.addObject("Weight", arrWeight); // ï¿½Ã·ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		System.out.println("Weight=" + Weight);
-		mv.addObject("WeightSize", WeightSize); // ÄÃ·¯ Á¾·ù
+		mv.addObject("WeightSize", WeightSize); // ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½
 		System.out.println("WeightSize=" + WeightSize);
 		mv.addObject("list1", list1);
 		return mv;
@@ -269,22 +269,22 @@ public class GoodsController {
 	}
 
 	@RequestMapping(value = "/shop/basketPopUp.do", method = RequestMethod.GET)
-	public ModelAndView basketPopUp(CommandMap commandMap) throws Exception { // »óÇ°µðÅ×ÀÏ Àå¹Ù±¸´Ï Å¬¸¯½Ã ÆË¾÷Ã¢
+	public ModelAndView basketPopUp(CommandMap commandMap) throws Exception { // ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¾ï¿½Ã¢
 		ModelAndView mv = new ModelAndView("/basket/basketPopUp");
 
 		return mv;
 	}
 
 	@RequestMapping(value = "/shop/insertBasket.do", method = RequestMethod.POST)
-	public ModelAndView insertBasket(CommandMap commandMap, HttpServletRequest request) throws Exception { // »óÇ°µðÅ×ÀÏ¿¡¼­
-																											// Àå¹Ù±¸´Ï Ãß°¡
+	public ModelAndView insertBasket(CommandMap commandMap, HttpServletRequest request) throws Exception { // ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½
+																											// ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 		ModelAndView mv = new ModelAndView("redirect:/goodsDetail.do");
 		commandMap.put("IDX", request.getParameter("IDX"));
 		Object MEM_NUM = "";
 		
 		  HttpSession session = request.getSession();
 		
-		  // ¼¼¼Ç°ª °¡Á®¿À±â HttpSession session = request.getSession(); // ¼¼¼Ç °ªÀ¸·Î Àû¿ë
+		  // ï¿½ï¿½ï¿½Ç°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ HttpSession session = request.getSession(); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		  if(((Map)session.getAttribute("session_MEMBER")).get("MEM_NUM")!=null) {
 			  
 		  
@@ -292,7 +292,7 @@ public class GoodsController {
 		  System.out.println("MEM_NUM   " + ((Map)session.getAttribute("session_MEMBER")).get("MEM_NUM"));
 		  }
 
-		// Àå¹Ù±¸´Ï¿¡ ³ÖÀ» »óÇ°ÀÌ ÇÑ°³ÀÏ¶§
+		// ï¿½ï¿½Ù±ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½Ñ°ï¿½ï¿½Ï¶ï¿½
 		
 			Map<String, Object> map = new HashMap<String, Object>();
 			
@@ -308,20 +308,20 @@ public class GoodsController {
 	}
 
 	@RequestMapping(value = "/shop/goodsOrder.do", method = RequestMethod.POST)
-	public ModelAndView goodsOrder(CommandMap commandMap, HttpServletRequest request) throws Exception { // »óÇ°µðÅ×ÀÏ¿¡¼­ ±¸¸Å
+	public ModelAndView goodsOrder(CommandMap commandMap, HttpServletRequest request) throws Exception { // ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		ModelAndView mv = new ModelAndView("shop/orderForm");
 
 		goodsService.gumeListDelete(commandMap.getMap());
 
-		Object MEM_NUM = ""; // ¼¼¼Ç°ª °¡Á®¿À±â
+		Object MEM_NUM = ""; // ï¿½ï¿½ï¿½Ç°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		HttpSession session = request.getSession();
 		commandMap.put("MEM_NUM", ((Map) session.getAttribute("session_MEMBER")).get("MEM_NUM"));
 
 		System.out.println("CommandMap=" + commandMap.getMap());
 		commandMap.remove("resultList");
 
-		if (commandMap.get("GOODS_COLOR").getClass().getName().equals("java.lang.String")) { // ÀÏ¹Ý ½ºÆ®¸µÀ¸·Î ¿ÔÀ» ¶§
-			Map<String, Object> map = new HashMap<String, Object>(); // ±¸¸Å½Ã Àå¹Ù±¸´Ï¿¡ µî·Ï
+		if (commandMap.get("GOODS_COLOR").getClass().getName().equals("java.lang.String")) { // ï¿½Ï¹ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+			Map<String, Object> map = new HashMap<String, Object>(); // ï¿½ï¿½ï¿½Å½ï¿½ ï¿½ï¿½Ù±ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½
 			System.out.println("CommandMap1=" + commandMap.getMap());
 
 			map.put("IDX", commandMap.get("IDX"));
@@ -330,15 +330,15 @@ public class GoodsController {
 			map.put("GOODS_COLOR", commandMap.get("GOODS_COLOR"));
 			map.put("GOODS_ATT_AMOUNT", commandMap.get("GOODS_ATT_AMOUNT"));
 			goodsService.insertBasket(map, request);
-		} else { // ¹è¿­·Î ¿ÔÀ» ¶§
+		} else { // ï¿½è¿­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 			System.out.println("CommandMap2=" + commandMap.getMap());
 			String[] Size = (String[]) commandMap.getMap().get("GOODS_SIZE");
 			String[] Color = (String[]) commandMap.getMap().get("GOODS_COLOR");
 			String[] Amount = (String[]) commandMap.getMap().get("GOODS_ATT_AMOUNT");
 			String[] Goods_Num = (String[]) commandMap.getMap().get("IDX");
 
-			System.out.println("´ÙÁß »çÀÌÁî0=" + Goods_Num[0]);
-			System.out.println("´ÙÁß »çÀÌÁî1=" + Goods_Num[1]);
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0=" + Goods_Num[0]);
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1=" + Goods_Num[1]);
 			Map<String, Object> map1 = new HashMap<String, Object>();
 			for (int j = 0; j <= Size.length - 1; j++) {
 				map1.put("GOODS_SIZE", Size[j]);
@@ -351,14 +351,14 @@ public class GoodsController {
 			}
 		}
 
-		List<Map<String, Object>> list0 = goodsService.selectBasketNo(commandMap.getMap()); // Àå¹Ù±¸´Ï PK°ª °¡Á®¿À±â
-		System.out.println("Àå¹Ù±¸´Ï³Ñ¹ö111111" + list0.get(0).get("BASKET_NUM"));
+		List<Map<String, Object>> list0 = goodsService.selectBasketNo(commandMap.getMap()); // ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ PKï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		System.out.println("ï¿½ï¿½Ù±ï¿½ï¿½Ï³Ñ¹ï¿½111111" + list0.get(0).get("BASKET_NUM"));
 
 		commandMap.remove("SELECT_BASKET_NUM");
 		commandMap.put("SELECT_BASKET_NUM", list0.get(0).get("BASKET_NUM"));
 
-		List<Map<String, Object>> list = basketService.basketSelectList(commandMap, request); // ¼±ÅÃÇÑ Àå¹Ù±¸´Ï¹øÈ£ÀÇ »óÇ°
-		Map<String, Object> map = orderService.orderMemberInfo(commandMap, request); // ÁÖ¹®ÀÚÁ¤º¸
+		List<Map<String, Object>> list = basketService.basketSelectList(commandMap, request); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ù±ï¿½ï¿½Ï¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½Ç°
+		Map<String, Object> map = orderService.orderMemberInfo(commandMap, request); // ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 		mv.addObject("list", list);
 		mv.addObject("map", map);
@@ -367,14 +367,14 @@ public class GoodsController {
 	}
 	
 	@RequestMapping(value = "/gd.do")
-	public ModelAndView gd(CommandMap commandMap) throws Exception { // »óÇ°µðÅ×ÀÏ Àå¹Ù±¸´Ï Å¬¸¯½Ã ÆË¾÷Ã¢
+	public ModelAndView gd(CommandMap commandMap) throws Exception { // ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¾ï¿½Ã¢
 		ModelAndView mv = new ModelAndView("review");
 
 		return mv;
 	}
 	
 	@RequestMapping(value = "/delivery.do")
-	public ModelAndView delivery(CommandMap commandMap) throws Exception { // »óÇ°µðÅ×ÀÏ Àå¹Ù±¸´Ï Å¬¸¯½Ã ÆË¾÷Ã¢
+	public ModelAndView delivery(CommandMap commandMap) throws Exception { // ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¾ï¿½Ã¢
 		ModelAndView mv = new ModelAndView("delivery");
 
 		return mv;

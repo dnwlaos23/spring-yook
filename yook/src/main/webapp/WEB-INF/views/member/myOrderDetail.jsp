@@ -10,7 +10,7 @@
 <body>
 <div style="height: 160px;"></div>
 <div align="center">
-   <h3>My Order</h3>
+   <h3>주문 상세</h3>
 </div>
 <div style="height: 50px;"></div>
 
@@ -33,14 +33,15 @@
 <div class="table-responsive">
          <table class="table table-striped">
             <colgroup>
-               <col width="15%" />
-               <col width="15%" />
-               <col width="15%" />
+               <col width="20%" />
+               <col width="20%" />
+               <col width="20%" />
                <col width="15%" />
             </colgroup>
             <thead>
                
                <tr>
+              	  <th style="text-align: center"></th>
                   <th style="text-align: center">상품명</th>
                   <th style="text-align: center">수량</th>
                   <th style="text-align: center">상품가</th>
@@ -48,19 +49,23 @@
                </tr>
             </thead>
             <tbody>
+            <form id="frm" name="frm"></form>
                   <c:choose>
                   <c:when test="${fn:length(list) > 0 }">
                      <c:forEach items="${list}" var="row">
                         <tr>
-                             <td align="center">${row.GOODS_NAME}<br/>${row.GOODS_WEIGHT } </td>
-                             <td align="center">${row.ORDER_DETAIL_AMOUNT}</td>
-                             <td align="center">${row.GOODS_PRICE}</td>
-                             <td><a href="#this" name="shit"><input type="button" value="취소/교환/반품" style="float:right; margin-right:80px;" class="btn btn-outline-dark btn-sm">
-                           <input type="hidden" id="MEM_NUM" name="MEM_NUM" value="${session_MEMBER.MEM_NUM}">
-                            <input type="hidden" id="ORDER_NUM" name="ORDER_NUM" value="${row.ORDER_NUM}">
-                            <input type="hidden" id="ORDER_DETAIL_GNUM" name="ORDER_DETAIL_GNUM" value="${row.ORDER_DETAIL_GNUM}">
-                           <input type="hidden" id="ORDER_DETAIL_SIZE" name="ORDER_DETAIL_SIZE" value="${row.ORDER_DETAIL_SIZE}">
-                            <input type="hidden" id="ORDER_DETAIL_COLOR" name="ORDER_DETAIL_COLOR" value="${row.ORDER_DETAIL_COLOR}"></a>
+                        	 <td><img src="/yook/img/goods_upload/${row.GOODS_IMAGE}" width="120px" height="100px"></td>
+                             <td align="center"><br/>${row.GOODS_NAME}<br/>${row.GOODS_WEIGHT } </td>
+                             <td align="center"><br/>${row.ORDER_DETAIL_AMOUNT}</td>
+                             <td align="center"><br/>${row.GOODS_PRICE}</td>
+                             <td>
+                             <br/>
+                             <a href="#this" name="shit"><input type="button" value="취소/교환/반품" style="float:right; margin-right:80px;" class="btn btn-outline-dark btn-sm">
+                           	 <input type="hidden" id="MEM_NUM" name="MEM_NUM" value="${session_MEMBER.MEM_NUM}">
+			                 <input type="hidden" id="ORDER_NUM" name="ORDER_NUM" value="${row.ORDER_NUM}">
+			                 <input type="hidden" id="GOODS_NUM" name="GOODS_NUM" value="${row.GOODS_NUM}">
+			                 <input type="hidden" id="ORDER_DETAIL_WEIGHT" name="ORDER_DETAIL_WEIGHT" value="${row.ORDER_DETAIL_WEIGHT}">
+			                 </a>
                         </td>                              
                         </tr>
                        </c:forEach>
@@ -73,9 +78,9 @@
    <!-- 배송 정보 -->
       <div class="table-responsive">
       
-      <table style="width:100%;">
+      <table style="width:100%; cellpadding:10px;">
          <colgroup>
-               <col width="15%" />
+               <col width="20%" />
                <col width="*" />
          </colgroup>
           <tr>
@@ -84,8 +89,11 @@
 
          <tr>
             <td>받는 사람</td>            
-            <td>${map.MEM_NAME}</td>                        
+            <td>${map.MEM_NAME}</td>  
+                                 
          </tr>
+         
+        
          <tr>
             <td>연락처</td>
             <td>${map.MEM_PHONE}</td>
@@ -93,7 +101,7 @@
          <tr>
             <td> 주 소</td>
             <td>
-               ${map.ORDER_DZIPCODE}<br>
+               (우편번호) ${map.ORDER_DZIPCODE}<br>
                ${map.ORDER_DADD1} ${map.ORDER_DADD2}
             </td>
          </tr>
@@ -137,12 +145,6 @@
       </table>
       </div>
       <hr>
-      <%-- <div style="float:right;">
-      	<a href="#this" name="bt"><input type="button" class="btn btn-outline-primary" value="주문목록">
-      	<input type="hidden" id="MEM_NUM" name="MEM_NUM" value="${session_MEMBER.MEM_NUM}">
-		<input type="hidden" id="ORDER_NUM" name="ORDER_NUM" value="${row.ORDER_NUM}">
-      	</a>
-      </div> --%>
       
 </div>
 
@@ -154,23 +156,19 @@
              });
 
          $("a[name='bt']").on("click", function(e){
-             e.preventDefault();
-             fn_bt();
+         e.preventDefault();
+         fn_bt();
                  });
          
       });
 
-
      function fn_shit(obj){
-        var comSubmit = new ComSubmit();
-        comSubmit.setUrl("<c:url value='/openMyChangeForm.do' />");
+         var comSubmit = new ComSubmit("frm");
+         comSubmit.setUrl("<c:url value='/openMyChangeForm.do' />");
          comSubmit.addParam("MEM_NUM", obj.parent().find("#MEM_NUM").val());
          comSubmit.addParam("ORDER_NUM", obj.parent().find("#ORDER_NUM").val());
+         comSubmit.addParam("ORDER_DETAIL_WEIGHT", obj.parent().find("#ORDER_DETAIL_WEIGHT").val());
          comSubmit.addParam("GOODS_NUM", obj.parent().find("#GOODS_NUM").val());
-         comSubmit.addParam("ORDER_DETAIL_GNUM", obj.parent().find("#ORDER_DETAIL_GNUM").val());
-         comSubmit.addParam("ORDER_DETAIL_SIZE", obj.parent().find("#ORDER_DETAIL_SIZE").val());
-         comSubmit.addParam("ORDER_DETAIL_COLOR", obj.parent().find("#ORDER_DETAIL_COLOR").val());
-         
          comSubmit.submit();
      }
 

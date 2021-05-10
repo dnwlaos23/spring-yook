@@ -13,7 +13,7 @@
 
     <title>로그인</title>
     
-    <script type="text/javascript">
+<script type="text/javascript">
 $(document).ready(function(){ 
    var message = "${message}";
    var url = "${url}";

@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 import org.apache.log4j.Logger;
 
 
+//static메소드로 유틸관련 메소드들을 만들어 놓는다.
 public class CommonUtils {
 	private static final Logger log = Logger.getLogger(CommonUtils.class);
 	

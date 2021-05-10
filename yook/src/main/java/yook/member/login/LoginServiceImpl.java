@@ -17,7 +17,6 @@ public class LoginServiceImpl implements LoginService{
 		return loginDAO.selectId(map);
 	}
 	
-	
 	@Override
 	public Map<String, Object> findIdWithEmail(Map<String, Object> map) throws Exception {
 		return loginDAO.findIdWithEmail(map);

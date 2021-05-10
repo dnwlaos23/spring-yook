@@ -24,16 +24,16 @@ import yook.shop.basket.BasketService;
 public class BasketController {
 
 
-Logger log = Logger.getLogger(this.getClass()); //·Î±×
+Logger log = Logger.getLogger(this.getClass()); //ï¿½Î±ï¿½
 	
 	@Resource(name="basketService")
 	private BasketService basketService;
 	
-	//¼¼¼Ç°ªÀ¸·Î Àå¹Ù±¸´Ï ÀüÃ¼¸®½ºÆ®
+	
 	   @RequestMapping(value="/basketList.do")
 	      public ModelAndView basketList(CommandMap commandMap, HttpServletRequest request) throws Exception {
 	   
-	         ModelAndView mv = new ModelAndView("basketList"); //jsp ÆÄÀÏÀÇ °æ·Î
+	         ModelAndView mv = new ModelAndView("basketList"); 
 	            
 	         HttpSession session = request.getSession();           
 	         commandMap.put("MEM_NUM", ((Map)session.getAttribute("session_MEMBER")).get("MEM_NUM"));
@@ -41,7 +41,7 @@ Logger log = Logger.getLogger(this.getClass()); //·Î±×
 	         
 	         commandMap.put("MEM_ID", ((Map)session.getAttribute("session_MEMBER")).get("MEM_ID"));
 	         System.out.println("MEM_ID = "+ ((Map)session.getAttribute("session_MEMBER")).get("MEM_ID"));
-	         System.out.println("put ÈÄ commandMap.MEM_ID = " + commandMap.get("MEM_ID"));
+	         System.out.println("put commandMap.MEM_ID = " + commandMap.get("MEM_ID"));
 
 	              List<Map<String,Object>> list = basketService.basketList(commandMap);
 	                            
@@ -55,7 +55,7 @@ Logger log = Logger.getLogger(this.getClass()); //·Î±×
 	                      
 	      }
 		
-		//Àå¹Ù±¸´Ï ¼ö·® ¼öÁ¤
+		//ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		@RequestMapping(value="/shop/basketModify.do")
 		public ModelAndView basketModify(CommandMap commandMap, HttpServletRequest request) throws Exception {
 			
@@ -65,7 +65,7 @@ Logger log = Logger.getLogger(this.getClass()); //·Î±×
 			return mv;
 		}
 		
-		//Àå¹Ù±¸´Ï ¼±ÅÃ»èÁ¦(1°³)
+		//ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½(1ï¿½ï¿½)
 		
 		@RequestMapping(value="/shop/basketDelete.do")
 		public ModelAndView basketDelete(CommandMap commandMap, HttpServletRequest request) throws Exception {
@@ -76,7 +76,7 @@ Logger log = Logger.getLogger(this.getClass()); //·Î±×
 			return mv;
 		}
 		
-		//Á¤¹Ù±¸´Ï ÀüÃ¼»èÁ¦
+		//ï¿½ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
 		@RequestMapping(value="/shop/basketAllDelete.do")
 		public ModelAndView basketAllDelete(CommandMap commandMap, HttpServletRequest request) throws Exception {
 			HttpSession session = request.getSession(); 

@@ -13,6 +13,7 @@ import yook.common.logger.LoggerInterceptor;
 public class LoggerInterceptor extends HandlerInterceptorAdapter {
 	protected Log log = LogFactory.getLog(LoggerInterceptor.class);
 	
+	//전처리기 설정, 컨트롤러가 호출되기 전에 실행된다.
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		if (log.isDebugEnabled()) {
@@ -22,6 +23,7 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter {
 		return super.preHandle(request, response, handler);
 	}
 	
+	//후처리기 설정, 컨트롤러가 실행되고 난 후 호출된다.
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 		if (log.isDebugEnabled()) {

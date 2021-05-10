@@ -13,8 +13,6 @@
 </head>
 <body>
 
-<%-- ${eCheck } --%>
-
 <c:if test="${id.MEM_ID==null || id.MEM_ID==''}">
 조회된 아이디가 없습니다.
 </c:if>

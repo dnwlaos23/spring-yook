@@ -17,7 +17,7 @@
 	<sql id="pagingPost">
 								) AA 
 					) AAA 
-			WHERE 	AAA.NUM BETWEEN 0 AND 10 
+			WHERE 	AAA.NUM BETWEEN #{START} AND #{END} 
 
 	</sql>
 	

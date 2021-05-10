@@ -21,48 +21,33 @@ public class MyInfoServiceImpl implements MyInfoService{
 
 	@Override
 	public Map<String, Object> selectMyInfoForm(Map<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
-		
-	
-		
-		
-		
+
 	    Map model = new HashMap();
 
 	    model.putAll(myInfoDAO.selectMyInfo(map));
 	    model.putAll(myInfoDAO.selectMyOrderInfo(map));
-//	    model.putAll(myInfoDAO.selectMyPointInfo(map));
 
-	    return model;
-		
-		
-		
-		
+	    return model;		
 	}
 
 	@Override
 	public Map<String, Object> updateMyInfoForm(Map<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
+		
 		return myInfoDAO.updateMyInfoForm(map);
 	}
 
 	@Override
 	public void updateMyInfo(Map<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
+		
 		myInfoDAO.updateMyInfo(map);
 	}
 
 	@Override
 	public void deleteMyInfo(Map<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
-		  myInfoDAO.deleteMyInfo(map);
+		
+		myInfoDAO.deleteMyInfo(map);
 	}
 
-	@Override
-	public Map<String, Object> selectMyPointForm(Map<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	
 }

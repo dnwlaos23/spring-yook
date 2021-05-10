@@ -14,73 +14,71 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import yook.common.map.CommandMap;
-import yook.common.util.FileUtils;
 import yook.shop.goods.GoodsDao;
 
 @Service("goodsService")
 public class GoodsServiceImpl implements GoodsService {
 
-	Logger log = Logger.getLogger(this.getClass()); // ·Î±×
+	Logger log = Logger.getLogger(this.getClass()); // ï¿½Î±ï¿½
 
 	@Resource(name = "goodsDao")
 	private GoodsDao goodsDao;
 
-	@Resource(name = "fileUtils")
-	private FileUtils fileUtils;
+	
 
 	/*
 	 * @Override public List<Map<String, Object>> newGoodsList(Map<String, Object>
-	 * map) throws Exception { // ÃÖ½Å »óÇ° ¸®½ºÆ®
+	 * map) throws Exception { // ï¿½Ö½ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½Æ®
 	 * 
 	 * return goodsDao.newGoodsList(map); }
 	 */
 	
 	@Override
-	public List<Map<String, Object>> bestGoodsList(Map<String, Object> map) throws Exception { // º£½ºÆ® »óÇ° ¸®½ºÆ®
+	public List<Map<String, Object>> bestGoodsList(Map<String, Object> map) throws Exception { // ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½Æ®
 
 		return goodsDao.bestGoodsList(map);
 	}
 	
 	@Override
-	public List<Map<String, Object>> GoodsListAll(Map<String, Object> map) throws Exception { // º£½ºÆ® »óÇ° ¸®½ºÆ®
+	public List<Map<String, Object>> GoodsListAll(Map<String, Object> map) throws Exception { // ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½Æ®
 
 		return goodsDao.GoodsListAll(map);
 	}
 
 	@Override
-	public List<Map<String, Object>> GoodsListPig(Map<String, Object> map) throws Exception { // º£½ºÆ® »óÇ° ¸®½ºÆ®
+	public List<Map<String, Object>> GoodsListPig(Map<String, Object> map) throws Exception { // ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½Æ®
 
 		return goodsDao.GoodsListPig(map);
 	}
 
 	@Override
-	public List<Map<String, Object>> GoodsListCow(Map<String, Object> map) throws Exception { // º£½ºÆ® »óÇ° ¸®½ºÆ®
+	public List<Map<String, Object>> GoodsListCow(Map<String, Object> map) throws Exception { // ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½Æ®
 
 		return goodsDao.GoodsListCow(map);
 	}
 
 	@Override
-	public List<Map<String, Object>> GoodsListChicken(Map<String, Object> map) throws Exception { // º£½ºÆ® »óÇ° ¸®½ºÆ®
+	public List<Map<String, Object>> GoodsListChicken(Map<String, Object> map) throws Exception { // ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½Æ®
 
 		return goodsDao.GoodsListChicken(map);
 	}
 
 	/*
 	 * @Override public List<Map<String, Object>> cateGoodsList(Map<String, Object>
-	 * map, String GOODS_CATE) throws Exception { // Ä«Å×°í¸®º° »óÇ° ¸®½ºÆ®
+	 * map, String GOODS_CATE) throws Exception { // Ä«ï¿½×°ï¿½ï¿½ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½Æ®
 	 * map.put("GOODS_CATE", GOODS_CATE); System.out.println(GOODS_CATE); return
 	 * goodsDao.cateGoodsList(map); }
 	 */
 
 	@Override
-	public void insertGoods(Map<String, Object> map, HttpServletRequest request) throws Exception { // »óÇ°µî·Ï
+	public void insertGoods(Map<String, Object> map, HttpServletRequest request) throws Exception { // ï¿½ï¿½Ç°ï¿½ï¿½ï¿½
 
-		// »óÇ°Á¤º¸ µî·Ï Äõ¸® ½ÇÇà
+		// ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		goodsDao.insertGoods(map);
 		System.out.println("****12132* " + map);
 
 		map.get("GOODS_WEIGHT");
-		System.out.println("¼±ÅÃÇÑ Áß·®=" + map.get("GOODS_WEIGHT"));
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß·ï¿½=" + map.get("GOODS_WEIGHT"));
 
 		String Weight = map.get("GOODS_WEIGHT").toString();
 		System.out.println("Weight" + Weight);
@@ -88,62 +86,62 @@ public class GoodsServiceImpl implements GoodsService {
 		System.out.println("WeightList" + WeightList);
 		System.out.println(WeightList.length);
 
-		for (int i = 0; i <= WeightList.length - 1; i++) { // »óÇ°µî·Ï½Ã ¼±ÅÃÇÑ »çÀÌÁî ÄÃ·¯ ÇÏ³ªÇÏ³ª¾¿ »óÇ°¿É¼ÇÅ×ÀÌºí¿¡ µî·ÏÇØÁÜ
+		for (int i = 0; i <= WeightList.length - 1; i++) { // ï¿½ï¿½Ç°ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ ï¿½Ï³ï¿½ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½É¼ï¿½ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-			System.out.println("¹è¿­ÀÔ´Ï´ç=" + WeightList[i]);
+			System.out.println("ï¿½è¿­ï¿½Ô´Ï´ï¿½=" + WeightList[i]);
 			map.put("GOODS_WEIGHT", WeightList[i]);
 			goodsDao.goodsAttributeInsert(map);
 
 		}
 
-		System.out.println("¿É¼Ç°ª=" + map);
+		System.out.println("ï¿½É¼Ç°ï¿½=" + map);
 
 	}
 
 	@Override
-	public void updateGoods(Map<String, Object> map, HttpServletRequest request) throws Exception { // »óÇ°µî·Ï
+	public void updateGoods(Map<String, Object> map, HttpServletRequest request) throws Exception { // ï¿½ï¿½Ç°ï¿½ï¿½ï¿½
 
-		// »óÇ°Á¤º¸ µî·Ï Äõ¸® ½ÇÇà
+		// ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		goodsDao.insertGoods(map);
 		System.out.println("****12132* " + map);
 
 		map.get("GOODS_WEIGHT");
-		System.out.println("¼±ÅÃÇÑ Áß·®=" + map.get("GOODS_WEIGHT"));
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß·ï¿½=" + map.get("GOODS_WEIGHT"));
 
 		String Weight = map.get("GOODS_WEIGHT").toString();
 
 		String WeightList[] = Weight.split(",");
 		System.out.println(WeightList.length);
 
-		for (int i = 0; i <= WeightList.length - 1; i++) { // »óÇ°µî·Ï½Ã ¼±ÅÃÇÑ »çÀÌÁî ÄÃ·¯ ÇÏ³ªÇÏ³ª¾¿ »óÇ°¿É¼ÇÅ×ÀÌºí¿¡ µî·ÏÇØÁÜ
+		for (int i = 0; i <= WeightList.length - 1; i++) { // ï¿½ï¿½Ç°ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ ï¿½Ï³ï¿½ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½É¼ï¿½ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-			System.out.println("¹è¿­ÀÔ´Ï´ç=" + WeightList[i]);
+			System.out.println("ï¿½è¿­ï¿½Ô´Ï´ï¿½=" + WeightList[i]);
 			map.put("GOODS_WEIGHT", WeightList[i]);
 			goodsDao.goodsAttributeUpdate(map);
 
 		}
 
-		System.out.println("¿É¼Ç°ª=" + map);
+		System.out.println("ï¿½É¼Ç°ï¿½=" + map);
 
 	}
 
 	@Override
-	public Map<String, Object> selectGoodsDetail(Map<String, Object> map, HttpServletRequest request) throws Exception { // »óÇ°
-																															// µðÅ×ÀÏ
+	public Map<String, Object> selectGoodsDetail(Map<String, Object> map, HttpServletRequest request) throws Exception { // ï¿½ï¿½Ç°
+																															// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		System.out.println("map1111111=" + map.get("IDX"));
 
 		/*
-		 * if(map.get("IDX").getClass().getName().equals("java.lang.String")){ // PK°ªÀÌ
-		 * ÀÏ¹Ý ½ºÆ®¸µÀ¸·Î ¿ÔÀ» ¶§ Map<String,Object> map1 = new HashMap<String,Object>();
+		 * if(map.get("IDX").getClass().getName().equals("java.lang.String")){ // PKï¿½ï¿½ï¿½ï¿½
+		 * ï¿½Ï¹ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Map<String,Object> map1 = new HashMap<String,Object>();
 		 * 
 		 * 
-		 * map1.put("IDX", map.get("IDX")); goodsDao.goodsHitCnt(map1); //Á¶È¸¼ö
+		 * map1.put("IDX", map.get("IDX")); goodsDao.goodsHitCnt(map1); //ï¿½ï¿½È¸ï¿½ï¿½
 		 * 
-		 * }else { // PK°ªÀÌ ¹è¿­·Î ³Ñ¾î ¿ÔÀ» ¶§ String[] Goods_No = (String[])map.get("IDX");
+		 * }else { // PKï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ï¿½ï¿½ ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ String[] Goods_No = (String[])map.get("IDX");
 		 * map.put("IDX", Goods_No[0]);
 		 * 
 		 * 
-		 * goodsDao.goodsHitCnt(map); //Á¶È¸¼ö
+		 * goodsDao.goodsHitCnt(map); //ï¿½ï¿½È¸ï¿½ï¿½
 		 * 
 		 * }
 		 */
@@ -156,8 +154,8 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 
 	@Override
-	public Map<String, Object> selectGoodsAtt(Map<String, Object> map) throws Exception { // »óÇ° »ó¼¼º¸±â ÄÃ·¯¶û »çÀÌÁî °¡Á®¿À±â(¹è¿­·Î
-																							// µÇÀÖÀ½)
+	public Map<String, Object> selectGoodsAtt(Map<String, Object> map) throws Exception { // ï¿½ï¿½Ç° ï¿½ó¼¼ºï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½è¿­ï¿½ï¿½
+																							// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 
 		Map<String, Object> resultMap = goodsDao.selectGoodsAtt(map);
 
@@ -165,9 +163,9 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 
 	@Override
-	public void insertBasket(Map<String, Object> map, HttpServletRequest request) throws Exception { // »óÇ°µðÅ×ÀÏ¿¡¼­ Àå¹Ù±¸´Ï Ãß°¡
+	public void insertBasket(Map<String, Object> map, HttpServletRequest request) throws Exception { // ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 		map.remove("resultList");
-		System.out.println("¼­ºñ½º¸Ê" + map);
+		System.out.println("ï¿½ï¿½ï¿½ñ½º¸ï¿½" + map);
 		goodsDao.insertBasket(map);
 
 	}
@@ -179,7 +177,7 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 
 	@Override
-	public List<Map<String, Object>> selectBasketNo(Map<String, Object> map) throws Exception { // Àå¹Ù±¸´Ï PK°ª °¡Á®¿À±â
+	public List<Map<String, Object>> selectBasketNo(Map<String, Object> map) throws Exception { // ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ PKï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 		return goodsDao.selectBasketNo(map);
 	}

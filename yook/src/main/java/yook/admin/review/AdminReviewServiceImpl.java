@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import yook.common.util.FileUtils;
+
 
 @Service("reviewService")
 public class AdminReviewServiceImpl implements AdminReviewService {
@@ -34,7 +34,7 @@ public class AdminReviewServiceImpl implements AdminReviewService {
 	
 	
 	@Override
-	public void insertReview(Map<String, Object> map, HttpServletRequest request) throws Exception { // ¸®ºä µî·Ï
+	public void insertReview(Map<String, Object> map, HttpServletRequest request) throws Exception { // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		reviewDAO.insertReview(map);
 	}
 	
