@@ -47,14 +47,8 @@ public class AdminMemberController {
          mv.addObject("TOTAL", 0);
       }
       return mv;
-   }
-   
-   
-   
-   
-   
-   
-   
+   }  
+  
    @RequestMapping(value="/openAdminMemberDetail.do")
    public ModelAndView openAdminMemberDetail(CommandMap commandMap)throws Exception{
       ModelAndView mv = new ModelAndView("adminMemberDetail");

@@ -30,15 +30,11 @@ public class AgoodsServiceImpl implements AgoodsService {
 	}
 	
 	@Override
-	   public void updateGoods(Map<String, Object> map, HttpServletRequest request) throws Exception { // ªÛ«∞ ºˆ¡§
-	      agoodsDAO.updateGoods(map); // ªÛ«∞≈◊¿Ã∫Ì æ˜µ•¿Ã∆Æ
-			
-		
-			 
-	      
+	   public void updateGoods(Map<String, Object> map, HttpServletRequest request) throws Exception {
+	      agoodsDAO.updateGoods(map);
+			      
 	      map.get("GOODS_WEIGHT");
-	      System.out.println("º±≈√«— ¡ﬂ∑Æ="+map.get("GOODS_WEIGHT"));
-	      
+	      System.out.println("ÏÉÅÌíà Ï§ëÎüâ="+map.get("GOODS_WEIGHT"));
 	      
 	      String Weight = map.get("GOODS_WEIGHT").toString();
 	      
@@ -48,9 +44,9 @@ public class AgoodsServiceImpl implements AgoodsService {
 	      
 	      for(int i=0; i <=WeightList.length-1; i++) {
 	         
-	            System.out.println("πËø≠¿‘¥œ¥Á="+WeightList[i]);
+	            System.out.println("ÏÉÅÌíàÏ§ëÎüâ="+WeightList[i]);
 	            map.put("GOODS_WEIGHT", WeightList[i]);
-	            goodsDao.goodsAttributeUpdate(map); // ªÛ«∞ ºˆ¡§Ω√ º±≈√«— ƒ√∑Ø ªÁ¿Ã¡Ó ¥ŸΩ√ µÓ∑œ
+	            goodsDao.goodsAttributeUpdate(map); 
 	         
 	      }
 	      

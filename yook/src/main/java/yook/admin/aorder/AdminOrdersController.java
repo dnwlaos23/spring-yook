@@ -22,12 +22,6 @@ Logger log = Logger.getLogger(this.getClass());
    @Resource(name="adminOrdersService")
    private AdminOrdersService adminOrdersService;
    
-   
-	/*
-	 * @RequestMapping(value="/adminOrderList.do") public ModelAndView
-	 * openMainList(Map<String,Object> commandMap) throws Exception{ ModelAndView mv
-	 * = new ModelAndView("adminOrderList"); return mv; }
-	 */
     
    // 주문.배송에 STATE별 리스트
       @RequestMapping(value="/adminOrderList.do")
@@ -85,8 +79,7 @@ Logger log = Logger.getLogger(this.getClass());
 
          String AORDER_STATE = "0";
          String AORDER_ORDER_NUM = "";
-         String AORDER_TRACKING = "";
-         // System.out.println("뷰에서 받는값:"+request.getParameter("os"));
+         String AORDER_TRACKING = "";        
 
          if (request.getParameter("AORDER_STATE") != null && request.getParameter("AORDER_STATE") != "") {
             AORDER_STATE = request.getParameter("order_state");
@@ -102,7 +95,7 @@ Logger log = Logger.getLogger(this.getClass());
              commandMap.put("AORDER_ORDER_NUM", AORDER_ORDER_NUM);
              commandMap.put("AORDER_STATE", AORDER_STATE);
 
-             adminOrdersService.order_state_ex(commandMap); // �����ȣ �ֱ�
+             adminOrdersService.order_state_ex(commandMap); 
 
           } else {
              commandMap.put("AORDER_ORDER_NUM", AORDER_ORDER_NUM);

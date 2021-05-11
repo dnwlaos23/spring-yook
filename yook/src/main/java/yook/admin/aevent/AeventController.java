@@ -28,7 +28,7 @@ public class AeventController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/admin/openAeventDetail.do")//글 디테일 보기
+	@RequestMapping(value="/admin/openAeventDetail.do")
 	   public ModelAndView openAeventDetail(CommandMap commandMap)throws Exception {
 		
 	      ModelAndView mv = new ModelAndView("adminEventDetail");
@@ -37,22 +37,21 @@ public class AeventController {
 	      return mv;
 	}
 	
-	@RequestMapping(value="/adminEventWrite.do") //작성 폼
+	@RequestMapping(value="/adminEventWrite.do") 
 	public ModelAndView openAeventWrite(CommandMap commandMap)throws Exception{
 		ModelAndView mv = new ModelAndView("adminEventWrite");
 		
 		return mv;
 	}
 	
-	@RequestMapping(value="/admin/insertAevent.do")//작성완료
+	@RequestMapping(value="/admin/insertAevent.do")
 	public ModelAndView insertAevent(CommandMap commandMap)throws Exception{
 		ModelAndView mv = new ModelAndView("redirect:/adminEventList.do");
 		aeventService.insertAevent(commandMap.getMap());
-		//mv.addObject("EVENT_NUM", commandMap.get("EVENT_NUM"));
 		return mv;
 	}
 	
-	@RequestMapping(value="/admineventUpdate.do") //수정폼
+	@RequestMapping(value="/admineventUpdate.do") 
 	public ModelAndView updateAeventForm(CommandMap commandMap)throws Exception{
 		ModelAndView mv = new ModelAndView("adminEventUpdate");
 		Map<String, Object> map = aeventService.updateAeventForm(commandMap.getMap());
@@ -60,14 +59,14 @@ public class AeventController {
 		return mv;	
 	}
 	
-	@RequestMapping(value="/admin/updateEvent.do") //수정 완료
+	@RequestMapping(value="/admin/updateEvent.do") 
 	public ModelAndView updateAfaq(CommandMap commandMap)throws Exception{
 		ModelAndView mv = new ModelAndView("redirect:/adminEventList.do");
 		aeventService.updateAevent(commandMap.getMap());
 		return mv;
 	}
 	
-	@RequestMapping(value="/admin/aEventDelete.do") //삭제
+	@RequestMapping(value="/admin/aEventDelete.do") 
 	public ModelAndView acsDelete(CommandMap commandMap)throws Exception{
 		ModelAndView mv = new ModelAndView("redirect:/adminEventList.do");
 		aeventService.deleteAevent(commandMap.getMap());

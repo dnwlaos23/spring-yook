@@ -18,19 +18,19 @@ public class AdminOrdersServiceImpl implements AdminOrdersService {
 	@Resource(name="adminOrdersDAO")
 	private AdminOrdersDAO adminOrdersDAO;
 
-	@Override
+	@Override 
 	public List<Map<String, Object>> selectAdminOrdersList(Map<String, Object> map) throws Exception {
 		return adminOrdersDAO.selectMainList(map);
 	}
 	
 	@Override
-	public List<Map<String, Object>> order_admin_a(CommandMap map) throws Exception { //ÁÖ¹®/¹è¼Û-½Å±ÔÁÖ¹®
+	public List<Map<String, Object>> order_admin_a(CommandMap map) throws Exception { //ê´€ë¦¬ì ì£¼ë¬¸ í˜„í™©
 		// TODO Auto-generated method stub
 		return adminOrdersDAO.order_admin_a(map);
 	}
 	
 	@Override
-	public List<Map<String, Object>> order_detail(CommandMap commandMap) throws Exception {
+	public List<Map<String, Object>> order_detail(CommandMap commandMap) throws Exception { //ê´€ë¦¬ì ì£¼ë¬¸ ìƒì„¸ë³´ê¸°
 		return adminOrdersDAO.order_detail(commandMap);
 	}
 	
@@ -40,12 +40,12 @@ public class AdminOrdersServiceImpl implements AdminOrdersService {
 	}
 	
 	@Override
-	public void order_state(CommandMap map) throws Exception { // ÁÖ¹®»óÅÂ º¯°æ
+	public void order_state(CommandMap map) throws Exception { //ì£¼ë¬¸ìƒíƒœ ë³€ê²½
 		adminOrdersDAO.order_state(map);
 	}
 
 	@Override
-	public void order_state_ex(CommandMap map) throws Exception {  // ÁÖ¹®»óÅÂ¿¡ ¹è¼Ûµµ º¯°æ
+	public void order_state_ex(CommandMap map) throws Exception {  //ì£¼ë¬¸ìƒíƒœ, ë°°ì†¡ ë³€ê²½
 		adminOrdersDAO.order_state_ex(map);
 	}
 	

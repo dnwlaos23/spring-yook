@@ -35,7 +35,7 @@ public class AdminReviewController {
 	private AdminReviewService reviewService;
 	
 	
-	@RequestMapping(value= "/adminReviewList.do") //¸®ºä ¸®½ºÆ® 
+	@RequestMapping(value= "/adminReviewList.do") 
 	  public ModelAndView adminReviewList2(CommandMap commandMap, HttpServletRequest request) throws Exception{ 
 	  ModelAndView mv = new ModelAndView("adminReviewList"); 
 	  commandMap.put("IDX", request.getParameter("IDX"));
@@ -48,13 +48,10 @@ public class AdminReviewController {
 	
 	
 	
-	  @RequestMapping(value= "/reviewDetail.do") //¸®ºä ¸®½ºÆ® 
+	  @RequestMapping(value= "/reviewDetail.do") 
 	  public ModelAndView adminReviewList(CommandMap commandMap, HttpServletRequest request) throws Exception{ 
 	  ModelAndView mv = new ModelAndView("reviewDetail"); 
-		/*
-		 * HttpSession session = request.getSession(); commandMap.put("MEM_NUM",
-		 * ((Map)session.getAttribute("session_MEMBER")).get("MEM_NUM"));
-		 */
+		
 	  List<Map<String, Object>> list =reviewService.adminReviewList(commandMap.getMap());
 	  System.out.println(list);
 	  
@@ -62,32 +59,12 @@ public class AdminReviewController {
 	  return mv; 
 	  }
 	  
-	  
-		
-		
-		/*
-		 * @RequestMapping(value="/reviewDetail.do") public ModelAndView
-		 * selectReviewList(CommandMap commandMap) throws Exception{ ModelAndView mv =
-		 * new ModelAndView("jsonView");
-		 * 
-		 * List<Map<String,Object>> list =
-		 * reviewService.adminReviewList(commandMap.getMap()); mv.addObject("list",
-		 * list); if(list.size() > 0){ mv.addObject("TOTAL",
-		 * list.get(0).get("TOTAL_COUNT")); } else{ mv.addObject("TOTAL", 0); }
-		 * 
-		 * return mv; }
-		 */
-		 
-		 
+ 
 	 
-	 
-		@RequestMapping(value="/reviewWrite.do")
+	  @RequestMapping(value="/reviewWrite.do")
 	    public ModelAndView reviewWrite(CommandMap commandMap, HttpServletRequest request)throws Exception{
 	         ModelAndView mv = new ModelAndView("reviewWriteForm");
-				/*
-				 * HttpSession session = request.getSession(); commandMap.put("MEM_NUM",
-				 * ((Map)session.getAttribute("session_MEMBER")).get("MEM_NUM"));
-				 */
+				
 	         commandMap.put("GOODS_NUM", request.getParameter("IDX"));
 	         System.out.println(commandMap.getMap());
 	         Map<String, Object> map = (commandMap.getMap());
@@ -108,7 +85,7 @@ public class AdminReviewController {
 	     return mv;
 	   }
 	
-	 @RequestMapping(value="/ReviewUpdate.do") //¼öÁ¤Æû
+	 @RequestMapping(value="/ReviewUpdate.do") 
 		public ModelAndView updateReviewForm(CommandMap commandMap)throws Exception{
 			ModelAndView mv = new ModelAndView("reviewUpdateForm");
 			Map<String, Object> map = reviewService.updateReviewForm(commandMap.getMap());
@@ -116,34 +93,15 @@ public class AdminReviewController {
 			return mv;	
 		}
 	
-	 @RequestMapping(value="/updateReview.do") //¼öÁ¤ ¿Ï·á
+	 @RequestMapping(value="/updateReview.do") 
 		public ModelAndView updateReviw(CommandMap commandMap)throws Exception{
 			ModelAndView mv = new ModelAndView("redirect:/reviewList.do");
 			reviewService.updateReview(commandMap.getMap());
 			return mv;
 		}
-		/*
-		 * @RequestMapping(value="/updateReview.do") public ModelAndView
-		 * updateReview(CommandMap commandMap, HttpServletRequest request) throws
-		 * Exception{ ModelAndView mv = new ModelAndView("redirect:/reviewList.do");
-		 * reviewService.updateReview(commandMap.getMap(), request); mv.addObject("IDX",
-		 * commandMap.getMap().get("IDX")); return mv; }
-		 * 
-		 * 
-		 * @RequestMapping(value = "/reviewModifyForm.do") public ModelAndView
-		 * reviewModifyForm(CommandMap commandMap, HttpServletRequest request) throws
-		 * Exception { //¸®ºä ¼öÁ¤Æû(¼Õ´Ô) ModelAndView mv = new
-		 * ModelAndView("reviewWriteForm");
-		 * 
-		 * Map<String, Object> map =
-		 * reviewService.selectGoodsDetail(commandMap.getMap(), request);
-		 * mv.addObject("map", map); mv.addObject("list", map.get("list"));
-		 * mv.addObject("type", "modify"); mv.addObject("title", "»óÇ° ¼öÁ¤");
-		 * System.out.println("¼öÁ¤Æû3=" + map); return mv; }
-		 */
+		
 	
-	
-		@RequestMapping(value="/deleteReview.do") //¸®ºä »èÁ¦
+		@RequestMapping(value="/deleteReview.do") 
 		public ModelAndView deleteBoard(CommandMap commandMap) throws Exception{
 			ModelAndView mv = new ModelAndView("redirect:/reviewList.do");
 			reviewService.deleteReview(commandMap.getMap());	

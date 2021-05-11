@@ -13,7 +13,7 @@ import yook.member.*;
 
 @Service("adminMemberService")
 public class AdminMemberServiceImpl implements AdminMemberService {
-   Logger log = Logger.getLogger(this.getClass()); // �α�
+   Logger log = Logger.getLogger(this.getClass()); 
    
    @Resource(name="adminMemDao")
    private AdminMemberDao adminMemDao;

@@ -16,7 +16,7 @@ public class AdminOrdersDAO extends AbstractDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Map<String,Object>> order_admin_a(CommandMap map) throws Exception { //admin주문현황 
+	public List<Map<String,Object>> order_admin_a(CommandMap map) throws Exception { 
 		
 		return (List<Map<String,Object>>) order_admin_a("adminOrder.order_admin_a",map.getMap());
 	}
@@ -34,7 +34,7 @@ public class AdminOrdersDAO extends AbstractDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void order_state(CommandMap map) throws Exception {  // 주문상태 변경
+	public void order_state(CommandMap map) throws Exception {  
 		order_state("adminOrder.order_state",map.getMap());
 	}
 	

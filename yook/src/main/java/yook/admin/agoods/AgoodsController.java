@@ -23,16 +23,16 @@ public class AgoodsController {
 	 @Resource(name = "goodsService")
 	   private GoodsService goodsService;
 	
-	@RequestMapping(value="/adminGoodsList.do") //°ü¸®ÀÚ »óÇ°¸®½ºÆ®
-	public ModelAndView openAdminGoodsList(CommandMap commandMap)throws Exception{
-		ModelAndView mv = new ModelAndView("adminGoodsList");
-		List<Map<String, Object>> list = agoodsService.openAgoodsList(commandMap.getMap());
-		mv.addObject("list", list);
-		
-		return mv;
-	}
+	 @RequestMapping(value="/adminGoodsList.do") //ê´€ë¦¬ì ìƒí’ˆë¦¬ìŠ¤íŠ¸
+		public ModelAndView openAdminGoodsList(CommandMap commandMap)throws Exception{
+			ModelAndView mv = new ModelAndView("adminGoodsList");
+			List<Map<String, Object>> list = agoodsService.openAgoodsList(commandMap.getMap());
+			mv.addObject("list", list);
+			
+			return mv;
+	} 
 	
-	@RequestMapping(value="/deleteAdminGoods.do") //»óÇ° »èÁ¦
+	@RequestMapping(value="/deleteAdminGoods.do") //ê´€ë¦¬ì ìƒí’ˆ ì‚­ì œ
 	public ModelAndView deleteAdminGoods(CommandMap commandMap)throws Exception{
 		ModelAndView mv = new ModelAndView("redirect:/adminGoodsList.do");
 		System.out.println(commandMap.getMap());
@@ -42,34 +42,29 @@ public class AgoodsController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/goodsModifyForm.do")
-	public ModelAndView goodsModifyForm(CommandMap commandMap, HttpServletRequest request) throws Exception { // »óÇ° ¼öÁ¤Æû(°ü¸®ÀÚ)
+	@RequestMapping(value = "/goodsModifyForm.do") //ê´€ë¦¬ì ìƒí’ˆ ìˆ˜ì • í¼
+	public ModelAndView goodsModifyForm(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("adminGoodsWrite");
 
 		Map<String, Object> map = goodsService.selectGoodsDetail(commandMap.getMap(), request);
-		System.out.println("¼öÁ¤Æû1=" + commandMap.getMap());
-		System.out.println("¼öÁ¤Æû2=" + map);
+		System.out.println("ì„ íƒìƒí’ˆ=" + map);
 		mv.addObject("map", map);
 		mv.addObject("list", map.get("list"));
 		mv.addObject("type", "modify");
-		mv.addObject("title", "»óÇ° ¼öÁ¤");
-		System.out.println("¼öÁ¤Æû3=" + map);
+		mv.addObject("title", "ìƒí’ˆ ìˆ˜ì •");
+		System.out.println("ì„ íƒìƒí’ˆ=" + map);
 		return mv;
 	}
 
-	@RequestMapping(value = "/goodsModify.do")
-	public ModelAndView goodsModify(CommandMap commandMap, HttpServletRequest request) throws Exception { // »óÇ° ¼öÁ¤¿Ï·á(°ü¸®ÀÚ)
+	@RequestMapping(value = "/goodsModify.do") //ê´€ë¦¬ì ìƒí’ˆ ìˆ˜ì •
+	public ModelAndView goodsModify(CommandMap commandMap, HttpServletRequest request) throws Exception { 
 		ModelAndView mv = new ModelAndView("redirect:/adminGoodsList.do");
 		System.out.println(commandMap.getMap());
-		
-		
-		
-		  commandMap.put("GOODS_IMAGE",request.getSession().getAttribute("GOODS_IMAGE"));
-		 
+				
+		commandMap.put("GOODS_IMAGE",request.getSession().getAttribute("GOODS_IMAGE"));
 		 
 		agoodsService.updateGoods(commandMap.getMap(), request);
-		System.out.println("¾÷µ¥ÀÌÆ®Map=" + commandMap);
-		System.out.println("¾÷µ¥ÀÌÆ®Map=" + commandMap.getMap());
+		System.out.println("ìƒí’ˆ ìˆ˜ì •=" + commandMap.getMap());
 		mv.addObject("IDX", commandMap.getMap().get("GOODS_NUM"));
 
 		return mv;

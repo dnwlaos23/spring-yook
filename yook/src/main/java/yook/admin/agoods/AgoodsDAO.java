@@ -23,11 +23,11 @@ public class AgoodsDAO extends AbstractDAO{
 	      delete("aGoods.deleteAdminGoodsATT", map);      
 	}
 	
-	public void updateGoods(Map<String, Object> map) throws Exception { // 惑前 荐沥
+	public void updateGoods(Map<String, Object> map) throws Exception {
 		update("aGoods.updateGoods", map);
 	}	
 	
-	public void attributeDelete(Map<String, Object> map) throws Exception { // 惑前可记 昏力
+	public void attributeDelete(Map<String, Object> map) throws Exception {
 		insert("aGoods.attributeDelete", map);
 	}
 	

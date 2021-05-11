@@ -18,9 +18,7 @@ public class AeventDAO extends AbstractDAO{
 	public Map<String, Object> aeventDetail(Map<String, Object> map)throws Exception{
 		return (Map<String, Object>) selectOne("aevent.aeventDetail", map);
 	}
-	
-	
-	
+		
 	public void insertAevent(Map<String, Object> map)throws Exception{
 		insert("aevent.insertAevent", map);
 	}

@@ -185,17 +185,7 @@ function fn_insertBoard() { // 유효성체크
         $("#GOODS_WEIGHT").focus();
         return false;
     }
- /*   // 사이즈
-    if(!$("#GOODS_ATT_SIZE").val()){
-        alert("상품사이즈를 선택해주세요.");
-        return false;
-    }  
-    // 컬러
-    if(!$("#GOODS_COLOR").val()){
-        alert("상품컬러를 입력해주세요.");
-        $("#GOODS_COLOR").focus();
-        return false;
-    }*/ 
+
     // 상품 수량
     if(!$("#GOODS_ATT_AMOUNT").val()){
         alert("상품수량을 입력해주세요.");
