@@ -125,7 +125,7 @@
          WHERE
             ORDER_NUM= #{ORDER_NUM}
       ]]>
-   </update>
+   </update>   
    
    <!-- admin order 추가 -->
    <insert id="insertAdmin" parameterType="hashmap">

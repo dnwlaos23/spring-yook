@@ -40,7 +40,7 @@
 		AND     MEM_DEL_GB = 'N'
 	]]>
 	</select>
-	<!-- 비밀번호 찾기 -->
+
 	<!-- 비밀번호 찾기 -->
 	<select id="findPwWithEmail" parameterType="hashmap" resultType="Integer">
 	<![CDATA[
@@ -52,7 +52,7 @@
 	]]>
 	</select>
 	
-	<!-- 비밀번호 변경폼 -->
+	<!-- 비밀번호 변경 -->
 	<update id="updateTempPw" parameterType="String">
 	<![CDATA[
     UPDATE  MEMBER
